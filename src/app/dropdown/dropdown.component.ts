@@ -10,6 +10,6 @@ import {MatFormFieldModule} from '@angular/material/form-field';
   styleUrl: './dropdown.component.css'
 })
 export class DropdownComponent {
-  toppings = new FormControl('');
-  toppingList: string[] = ['Fitness', 'Cooking', 'Mindfulness', 'DIY', 'Programming', 'Dancing', 'Entertainment', 'Magic', 'Marital Arts', 'Yoga'];
+  categories = new FormControl('');
+  categoryList: string[] = ['Fitness', 'Cooking', 'Mindfulness', 'DIY', 'Programming', 'Dancing', 'Entertainment', 'Magic', 'Marital Arts', 'Yoga'];
 }
