@@ -23,7 +23,16 @@
                     <input type="text" placeholder="Postcode" class="w-full border rounded-md p-1">
                 </div>
             </div>
-            <button id="book-btn" class="border h-16 rounded-md bg-orange-500 font-semibold hover:bg-orange-400 hover:drop-shadow-lg transition">Payment</button>
+            <google-pay-button
+            environment="TEST"
+            buttonColor="black"
+            buttonType="buy"
+            [paymentRequest]="paymentRequest" [style.width.px]="buttonWidth"
+            (loadpaymentata)="onLoadPaymentData($event)"
+            class="mx-auto"
+            >
+            </google-pay-button>
+            <!-- <button id="book-btn" class="border h-16 rounded-md bg-orange-500 font-semibold hover:bg-orange-400 hover:drop-shadow-lg transition">Payment</button> -->
         </form>
     </div>
 </body>
