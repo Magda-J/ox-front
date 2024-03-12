@@ -46,4 +46,29 @@ export class BookingComponent {
     console.log(event, "DATA");
     
   }
+  
+  createFormObject = () => {
+    // const googleButton = document.querySelector('google-pay-button')
+    const firstName = document.querySelector('#first-name') as HTMLInputElement
+    const lastName = document.querySelector('#last-name') as HTMLInputElement
+    const email = document.querySelector('#email') as HTMLInputElement
+    const phone = document.querySelector('#phone') as HTMLInputElement
+    const address = document.querySelector('#address') as HTMLInputElement
+    const city = document.querySelector('#city') as HTMLInputElement
+    const postcode = document.querySelector('#postcode') as HTMLInputElement
+
+    const formData = {
+      firstName: firstName.value,
+      lastName: lastName.value,
+      email: email.value,
+      phone: phone.value,
+      address: address.value,
+      city: city.value,
+      postcode: postcode.value
+    }
+
+    console.log(formData);
+    
+
+  }
 }
