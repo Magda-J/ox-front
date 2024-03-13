@@ -13,8 +13,8 @@ export class EventpageComponent {
 
   ngOnInit() {
     this.eventAddService
-      .getAllEvents('http://localhost:3000/', { page: 0, perPage: 1 })
-      .subscribe((events: Event) => {
+      .getAllEvents('http://localhost:3000/event/events/') // Update the URL
+      .subscribe((events: Event[]) => { // Update to Event[]
         console.log(events);
       });
   }

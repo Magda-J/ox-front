@@ -11,10 +11,7 @@ export class EventAddService {
 
   constructor(private apiService: ApiService) { }
 
-  getAllEvents = (url: string, params: PaginationParams ): Observable<Event> => {
-    return this.apiService.get(url,{
-      params,
-      responseType: "json",
-    });
+  getAllEvents(url: string): Observable<Event[]> {
+    return this.apiService.get<Event[]>(url);
   }
 }
