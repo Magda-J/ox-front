@@ -100,7 +100,7 @@
               placeholder=" "
               onclick="this.setAttribute('type', 'date');"
               class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
-             
+              [(ngModel)] = "event.dates[0]"
               />
             <label
               for="date"
@@ -118,12 +118,28 @@
               placeholder=" "
               onclick="this.setAttribute('type', 'time');"
               class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
-            />
+              [(ngModel)] = "event.time[0]"
+              />
             <label
               for="time"
               class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500"
-              >Time</label
-            >
+              > Start Time</label>
+            
+          </div>
+          <div class="relative z-0 w-full">
+            <input
+              type="text"
+              name="time"
+              placeholder=" "
+              onclick="this.setAttribute('type', 'time');"
+              class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
+              [(ngModel)] = "event.time[0]"
+              />
+            <label
+              for="time"
+              class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500"
+              > End Time</label>
+            
           </div>
         </div>
 
@@ -178,6 +194,7 @@
                 placeholder=" "
                 onclick="this.setAttribute('type', 'date');"
                 class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
+              [(ngModel)] = "event.dates[1]"
               />
               <label
                 for="date"
@@ -195,7 +212,8 @@
                 placeholder=" "
                 onclick="this.setAttribute('type', 'time');"
                 class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
-              />
+                [(ngModel)] = "event.time[1]"
+                />
               <label
                 for="time"
                 class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500"
@@ -242,7 +260,8 @@
                 placeholder=" "
                 onclick="this.setAttribute('type', 'date');"
                 class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
-              />
+                [(ngModel)] = "event.dates[2]"
+                />
               <label
                 for="date"
                 class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500"
@@ -259,7 +278,8 @@
                 placeholder=" "
                 onclick="this.setAttribute('type', 'time');"
                 class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
-              />
+                [(ngModel)] = "event.time[2]"
+                />
               <label
                 for="time"
                 class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500"

@@ -12,15 +12,14 @@ import { MatSelectChange } from '@angular/material/select';
 })
 export class DropdownComponent {
   @Input() event: any;
-  
+
   categories = new FormControl('');
   categoryList: string[] = ['Fitness', 'Cooking', 'Mindfulness', 'DIY', 'Programming', 'Dancing', 'Entertainment', 'Magic', 'Marital Arts', 'Yoga'];
 
   handleSelectionChange(event: MatSelectChange) {
-    // Get the selected options
+   
     const selectedOptions = event.value as string[];
-  
-    // Update the tags array
+      
     this.event.tags = selectedOptions;
   }
 

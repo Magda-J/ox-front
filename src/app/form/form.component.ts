@@ -15,6 +15,7 @@ import { FormsModule } from '@angular/forms';
 // export class FormComponent {
 
 // }
+
 export class FormComponent implements OnInit {
   showEvents: boolean = false;
 
@@ -22,23 +23,32 @@ export class FormComponent implements OnInit {
   toggleEvents() {
     this.showEvents = !this.showEvents;
   }
-
  
-
-
-
-  event: any = {
+  event: EventData = {
       eventName: '',
       eventImg: '',    
       price: 0,
       tags: [],
       description: '',
-    
-
+      dates: [],
+      time: [],
+      spaces: 0
   };
+
 
   onSubmit() {
     console.log(this.event)
   }
 
 }
+
+export interface EventData {
+  eventName: string,
+  eventImg: string,    
+  price: number,
+  tags: string[],
+  description: string
+  dates: Date[],
+  time: string[],
+  spaces: number,
+};
