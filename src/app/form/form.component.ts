@@ -31,8 +31,9 @@ export class FormComponent implements OnInit {
       tags: [],
       description: '',
       dates: [],
-      time: [],
-      spaces: 0
+      starttime: [],
+      endtime: [],
+      spaces: []
   };
 
 
@@ -49,6 +50,7 @@ export interface EventData {
   tags: string[],
   description: string
   dates: Date[],
-  time: string[],
-  spaces: number,
+  starttime: string[],
+  endtime: string[],
+  spaces: number[],
 };
