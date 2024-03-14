@@ -57,7 +57,17 @@ export class BookingComponent {
     const city = document.querySelector('#city') as HTMLInputElement
     const postcode = document.querySelector('#postcode') as HTMLInputElement
 
-    const formData = {
+    interface ParticipantInterface {
+      firstName: string, 
+      lastName: string, 
+      email: string, 
+      phone: string, 
+      address: string, 
+      city: string, 
+      postcode: string
+    }
+
+    const formData: ParticipantInterface = {
       firstName: firstName.value,
       lastName: lastName.value,
       email: email.value,
