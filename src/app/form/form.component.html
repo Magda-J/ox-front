@@ -104,7 +104,7 @@
               placeholder=" "
               onclick="this.setAttribute('type', 'date');"
               class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
-              [(ngModel)] = "event.dates[0]"
+              [(ngModel)] = "event.dates[0].date[0]"
               />
             <label
               for="date"
@@ -122,7 +122,7 @@
               placeholder=" "
               onclick="this.setAttribute('type', 'time');"
               class="time-input pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
-              [(ngModel)] = "event.starttime[0]"
+              [(ngModel)] = "event.dates[0].starttime[0]"
               />
             <label
               for="time"
@@ -137,7 +137,7 @@
               placeholder=" "
               onclick="this.setAttribute('type', 'time');"
               class="time-input pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
-              [(ngModel)] = "event.endtime[0]"
+              [(ngModel)] = "event.dates[0].endtime[0]"
               />
             <label
               for="time"
@@ -153,7 +153,7 @@
             value=""
             onclick="this.setAttribute('value', this.value);"
             class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none z-1 focus:outline-none focus:ring-0 focus:border-black border-gray-200"
-            [(ngModel)] = "event.spaces[0]"
+            [(ngModel)] = "event.dates[0].spaces[0]"
             >
             <option value="" selected disabled hidden></option>
             <option value="1">1</option>
@@ -199,7 +199,7 @@
                 placeholder=" "
                 onclick="this.setAttribute('type', 'date');"
                 class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
-              [(ngModel)] = "event.dates[1]"
+              [(ngModel)] = "event.dates[0].date[1]"
               />
               <label
                 for="date"
@@ -217,7 +217,7 @@
                 placeholder=" "
                 onclick="this.setAttribute('type', 'time');"
                 class="time-input pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
-                [(ngModel)] = "event.starttime[1]"
+                [(ngModel)] = "event.dates[0].starttime[1]"
                 />
               <label
                 for="time"
@@ -232,7 +232,7 @@
                 placeholder=" "
                 onclick="this.setAttribute('type', 'time');"
                 class="time-input pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
-                [(ngModel)] = "event.endtime[1]"
+                [(ngModel)] = "event.dates[0].endtime[1]"
                 />
               <label
                 for="time"
@@ -247,7 +247,7 @@
               value=""
               onclick="this.setAttribute('value', this.value);"
               class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none z-1 focus:outline-none focus:ring-0 focus:border-black border-gray-200"
-              [(ngModel)] = "event.spaces[1]"
+              [(ngModel)] = "event.dates[0].spaces[1]"
             >
               <option value="" selected disabled hidden></option>
               <option value="1">1</option>
@@ -281,7 +281,7 @@
                 placeholder=" "
                 onclick="this.setAttribute('type', 'date');"
                 class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
-                [(ngModel)] = "event.dates[2]"
+                [(ngModel)] = "event.dates[0].date[2]"
                 />
               <label
                 for="date"
@@ -299,7 +299,7 @@
                 placeholder=" "
                 onclick="this.setAttribute('type', 'time');"
                 class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
-                [(ngModel)] = "event.starttime[2]"
+                [(ngModel)] = "event.dates[0].starttime[2]"
                 />
               <label
                 for="time"
@@ -314,7 +314,7 @@
                 placeholder=" "
                 onclick="this.setAttribute('type', 'time');"
                 class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
-                [(ngModel)] = "event.endtime[2]"
+                [(ngModel)] = "event.dates[0].endtime[2]"
                 />
               <label
                 for="time"
@@ -329,7 +329,7 @@
               value=""
               onclick="this.setAttribute('value', this.value);"
               class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none z-1 focus:outline-none focus:ring-0 focus:border-black border-gray-200"
-              [(ngModel)] = "event.spaces[2]"
+              [(ngModel)] = "event.dates[0].spaces[2]"
               >
               <option value="" selected disabled hidden></option>
               <option value="1">1</option>
@@ -588,12 +588,12 @@
                     <h2
                       class="text-lg font-medium text-gray-700 sm:text-2xl dark:text-gray-200"
                     >
-                    {{event.dates[0] | json}}
+                    {{event.dates[0].date[0] | json}}
                     </h2>
                     <div
                       class="px-2 text-xs text-orange-500 bg-gray-100 rounded-full sm:px-4 sm:py-1 dark:bg-gray-700"
                     >
-                    {{event.starttime[0] | json}} - {{event.endtime[0] | json}} (GMT)
+                    {{event.dates[0].starttime[0] | json}} - {{event.dates[0].endtime[0] | json}} (GMT)
                     </div>
                   </div>
                 </div>
@@ -603,7 +603,7 @@
                 >
                   9
                   <span class="text-md sm:text-base font-medium"
-                    >/ {{event.spaces[0] | json}} spots remaining</span
+                    >/ {{event.dates[0].spaces[0] | json}} spots remaining</span
                   >
                 </h2>
                 <button
@@ -620,12 +620,12 @@
                     <h2
                       class="text-lg font-medium text-gray-700 sm:text-2xl dark:text-gray-200"
                     >
-                    {{event.dates[1] | json}}
+                    {{event.dates[0].date[1] | json}}
                     </h2>
                     <div
                       class="px-2 text-xs text-orange-500 bg-gray-100 rounded-full sm:px-4 sm:py-1 dark:bg-gray-700"
                     >
-                    {{event.starttime[1] | json}} - {{event.endtime[1] | json}} (GMT)
+                    {{event.dates[0].starttime[1] | json}} - {{event.dates[0].endtime[1] | json}} (GMT)
                     </div>
                   </div>
                 </div>
@@ -635,7 +635,7 @@
                 >
                   10
                   <span class="text-md sm:text-base font-medium"
-                    >/{{event.spaces[1] | json}} spots remaining</span
+                    >/{{event.dates[0].spaces[1] | json}} spots remaining</span
                   >
                 </h2>
                 <button
@@ -652,12 +652,12 @@
                     <h2
                       class="text-lg font-medium text-gray-700 sm:text-2xl dark:text-gray-200"
                     >
-                    {{event.dates[2] | json}}
+                    {{event.dates[0].date[2] | json}}
                     </h2>
                     <div
                       class="px-2 text-xs text-orange-500 bg-gray-100 rounded-full sm:px-4 sm:py-1 dark:bg-gray-700"
                     >
-                    {{event.starttime[2] | json}} - {{event.endtime[2] | json}} (GMT)
+                    {{event.dates[0].starttime[2] | json}} - {{event.dates[0].endtime[2] | json}} (GMT)
                     </div>
                   </div>
                 </div>
@@ -667,7 +667,7 @@
                 >
                   6
                   <span class="text-md sm:text-base font-medium"
-                    >/{{event.spaces[2] | json}} spots remaining</span
+                    >/{{event.dates[0].spaces[2] | json}} spots remaining</span
                   >
                 </h2>
                 <button
