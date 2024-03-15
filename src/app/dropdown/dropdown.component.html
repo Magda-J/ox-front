@@ -1,8 +1,8 @@
 <mat-form-field>
     <mat-label>Categories</mat-label>
-    <mat-select  [formControl]="categories" multiple (selectionChange)="handleSelectionChange($event)">
+    <mat-select [formControl]="categories" multiple (selectionChange)="handleSelectionChange($event)">
       @for (category of categoryList; track category) {
-        <mat-option [value]="category" >{{category}}</mat-option>
+        <mat-option  [value]="category" >{{category}}</mat-option>
       }
     </mat-select>
   </mat-form-field>

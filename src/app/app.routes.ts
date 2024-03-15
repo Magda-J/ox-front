@@ -1,3 +1,18 @@
-import { Routes } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
+import { EventpageComponent } from './eventpage/eventpage.component';
+import { FormComponent } from './form/form.component';
 
-export const routes: Routes = [];
+export const routes: Routes = [
+{
+path: 'eventpage/:id', title: 'Event', 
+loadComponent: () => import('./eventpage/eventpage.component').then((c)=>c.EventpageComponent)
+    
+
+// component: EventpageComponent,
+},
+{
+path: 'form', title: 'Form', component: FormComponent,
+},
+
+
+];
