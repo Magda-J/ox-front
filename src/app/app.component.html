@@ -1,1 +1,10 @@
+
+<div class="bg-orange-400 flex gap-4 p-2 items-end justify-end" *ngIf="authService.currentUserSig() === null">
+    <a routerLink="/login" class="hover:bg-orange-500 p-2 rounded">Login</a> <br>
+    <a routerLink="/signup" class="hover:bg-orange-500 p-2 rounded">Signup</a>
+</div>
+<div *ngIf="authService.currentUserSig()">
+    {{ authService.currentUserSig()?.username }}
+    <span (click)="logout()">Log out [temporary]</span>
+</div>
 <router-outlet />
