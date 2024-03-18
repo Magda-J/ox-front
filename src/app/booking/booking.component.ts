@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { GooglePayButtonModule } from '@google-pay/button-angular'
 
 @Component({
@@ -9,6 +10,15 @@ import { GooglePayButtonModule } from '@google-pay/button-angular'
   styleUrl: './booking.component.css'
 })
 export class BookingComponent {
+  id: any;
+  constructor(private activatedRoute: ActivatedRoute) {
+  }
+
+  ngOnInit() {
+    this.id = this.activatedRoute.snapshot.paramMap.get('id');
+    console.log(this.id);
+    }
+
   buttonWidth = 240
   paymentRequest: google.payments.api.PaymentDataRequest = {
     apiVersion: 2,
