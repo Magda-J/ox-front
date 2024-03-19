@@ -6,7 +6,15 @@
     <title>Booking</title>
 </head>
 <body class="w-screen h-screen flex m-0 p-0">
-    <div class="h-screen md:w-1/2 bg-orange-500 hidden sm:flex"></div>
+    <div *ngIf="eventData" class="h-screen md:w-1/2 bg-orange-500 hidden sm:flex flex-col gap-4 justify-center items-center">
+        <p class="text-lg font-medium">You're about to book</p>
+        <h2 class='text-4xl font-bold'>{{ eventData.eventName }}</h2>
+        <div class="flex gap-3 items-center">
+            <p class="text-sm font-medium">Hosted by {{ eventData.hostName }}</p>
+            <img class="w-10 h-10 object-cover rounded-full" [src]='eventData.hostProfilePic' alt="Host Profile Pic">
+        </div>
+    </div>
+        
     <div class="h-screen w-full md:w-1/2">
         <form action="" class="h-[475px] w-[350px] mx-auto mt-16 border p-4 flex flex-col justify-between drop-shadow-sm">
             <h1 class="text-lg font-semibold">Please fill in details below</h1>
@@ -28,7 +36,7 @@
             buttonColor="black"
             buttonType="buy"
             [paymentRequest]="paymentRequest" [style.width.px]="buttonWidth"
-            (loadpaymentata)="onLoadPaymentData($event)"
+            (loadpaymentdata)="onLoadPaymentData($event)"
             class="mx-auto"
             (click)="onClick()"
             >

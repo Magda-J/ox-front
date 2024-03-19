@@ -4,16 +4,41 @@ import { GooglePayButtonModule } from '@google-pay/button-angular'
 import { ParticipantInterface } from '../../types';
 import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-booking',
   standalone: true,
-  imports: [GooglePayButtonModule, FormsModule],
+  imports: [GooglePayButtonModule, FormsModule, CommonModule],
   templateUrl: './booking.component.html',
   styleUrl: './booking.component.css'
 })
 export class BookingComponent {
 
+  eventData: any;
+
+  constructor(private http: HttpClient, private route: ActivatedRoute) {}
+
+  ngOnInit(): void {
+    this.fetchEvent()
+  }
+
+  fetchEvent(): void {
+    const eventid = this.route.snapshot.params['eventid'];
+    const apiUrl = `http://localhost:3000/events/${eventid}`
+
+    this.http.get(apiUrl)
+      .subscribe({
+        next: (response: any) => {
+          console.log('GET request successful', response);
+          this.eventData = response;
+        },
+        error: (error: any) => {
+          console.error('Error occurred during GET request', error);
+        }
+      });
+  }
+  
   buttonWidth = 240
   paymentRequest: google.payments.api.PaymentDataRequest = {
     apiVersion: 2,
@@ -41,15 +66,15 @@ export class BookingComponent {
     transactionInfo: {
       totalPriceStatus: 'FINAL',
       totalPriceLabel: 'Total',
-      totalPrice: '100.00',
-      currencyCode: 'USD',
-      countryCode: 'US'
+      totalPrice: '100.00', // DYNAMIC
+      currencyCode: 'GBP',
+      countryCode: 'UK'
     }
   }
 
   onLoadPaymentData(event: any) {
     console.log(event, "DATA");
-    
+    window.location.href = 'http://localhost:4200' // REDIRECT TO A 'BOOKING COMPLETED' PAGE
   }
   
     formData: ParticipantInterface = {
@@ -62,8 +87,6 @@ export class BookingComponent {
       city: '',
       postcode: ''
     }
-
-  constructor(private http: HttpClient, private route: ActivatedRoute) {}
 
   onClick(): void {
 
