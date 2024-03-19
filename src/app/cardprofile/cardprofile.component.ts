@@ -1,11 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-cardprofile',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink, RouterLinkActive],
   templateUrl: './cardprofile.component.html',
   styleUrl: './cardprofile.component.css'
 })
@@ -35,7 +36,7 @@ export class CardprofileComponent {
 }
 
 export interface Event {
-  
+  _id: string;
   eventName: string;
   eventImg: string;
   // hostName: string;
