@@ -1,5 +1,5 @@
 <!-- Background image -->
-
+<div class="bg-[#F4F3F1]">
 <div class="sm:h-[370px] flex flex-row">
   <div
     class=" shadow-xl border-orange-200 border-2 rounded-lg mt-4 mx-4 flex flex-row"
@@ -113,7 +113,7 @@
           </button></div></div>
         </div>
         <div
-          class="flex flex-wrap md:flex-col-1 md:w-[35%] lg:w-[44%]  gap-4 border border-orange-200 rounded-md p-4 mb-4 sm:mb-0"
+          class="flex flex-wrap md:flex-col-1 md:w-[35%] lg:w-[44%]  gap-4 border border-orange-200 rounded-md p-2 mb-4 sm:mb-0"
         >
           
           <p
@@ -123,8 +123,7 @@
             flavors, these classes offer a dynamic platform to expand your
             culinary repertoire and discover the joy.     From mastering classic dishes to experimenting with innovative
             flavors, these classes offer a dynamic platform to expand your
-            culinary repertoire and discover the joy.    From mastering classic dishes to experimenting with innovative
-            flavors, these classes offer a dynamic platform to expand your
+            culinary repertoire and discover the joy.    
             
           </p>
           <app-bioedit></app-bioedit>
@@ -143,5 +142,6 @@
 <h1 >Your Experiences</h1>
 </div>
 <div>
-    <app-cardprofile ></app-cardprofile>
+    <app-cardprofile class="mx-auto" [events]="sampleEvents"></app-cardprofile>
+</div>
 </div>

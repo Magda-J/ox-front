@@ -44,7 +44,7 @@ export class FormComponent implements OnInit {
   onSubmit() {
    
     console.log(this.event);
-    const apiUrl = 'http://localhost:3000/event/postevent';
+    const apiUrl = 'http://localhost:3000/events/postevent';
     
     // HTTP POST request
     this.http.post(apiUrl, this.event)
