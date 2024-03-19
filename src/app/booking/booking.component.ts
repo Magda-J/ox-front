@@ -1,23 +1,18 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { GooglePayButtonModule } from '@google-pay/button-angular'
+import { ParticipantInterface } from '../../types';
+import { HttpClient } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-booking',
   standalone: true,
-  imports: [GooglePayButtonModule],
+  imports: [GooglePayButtonModule, FormsModule],
   templateUrl: './booking.component.html',
   styleUrl: './booking.component.css'
 })
 export class BookingComponent {
-  id: any;
-  constructor(private activatedRoute: ActivatedRoute) {
-  }
-
-  ngOnInit() {
-    this.id = this.activatedRoute.snapshot.paramMap.get('id');
-    console.log(this.id);
-    }
 
   buttonWidth = 240
   paymentRequest: google.payments.api.PaymentDataRequest = {
@@ -57,38 +52,72 @@ export class BookingComponent {
     
   }
   
-  createFormObject = () => {
-    // const googleButton = document.querySelector('google-pay-button')
-    const firstName = document.querySelector('#first-name') as HTMLInputElement
-    const lastName = document.querySelector('#last-name') as HTMLInputElement
-    const email = document.querySelector('#email') as HTMLInputElement
-    const phone = document.querySelector('#phone') as HTMLInputElement
-    const address = document.querySelector('#address') as HTMLInputElement
-    const city = document.querySelector('#city') as HTMLInputElement
-    const postcode = document.querySelector('#postcode') as HTMLInputElement
+  // createFormObject = () => {
+  //   const firstName = document.querySelector('#first-name') as HTMLInputElement
+  //   const lastName = document.querySelector('#last-name') as HTMLInputElement
+  //   const email = document.querySelector('#email') as HTMLInputElement
+  //   const phone = document.querySelector('#phone') as HTMLInputElement
+  //   const address = document.querySelector('#address') as HTMLInputElement
+  //   const city = document.querySelector('#city') as HTMLInputElement
+  //   const postcode = document.querySelector('#postcode') as HTMLInputElement
 
-    interface ParticipantInterface {
-      firstName: string, 
-      lastName: string, 
-      email: string, 
-      phone: string, 
-      address: string, 
-      city: string, 
-      postcode: string
+    formData: ParticipantInterface = {
+      _id: '',
+      firstName: '',
+      lastName: '',
+      email: '',
+      phone: '',
+      address: '',
+      city: '',
+      postcode: ''
     }
 
-    const formData: ParticipantInterface = {
-      firstName: firstName.value,
-      lastName: lastName.value,
-      email: email.value,
-      phone: phone.value,
-      address: address.value,
-      city: city.value,
-      postcode: postcode.value
-    }
+    // console.log(formData);
 
-    console.log(formData);
+  // }
+
+  constructor(private http: HttpClient, private route: ActivatedRoute) {}
+
+  // ngOnInit(): void {
+  //   this.route.params.subscribe(params => {
+  //     const eventid = params['eventid'];
+  //     const dateindex = params['dateindex'];
+  //     // Now you can use eventid and dateindex as needed
+  //     console.log('Event ID:', eventid);
+  //     console.log('Date Index:', dateindex);
+  //   });
+  // }
+
+  onClick(): void {
+
+    console.log(this.formData);
+    const eventid = this.route.snapshot.params['eventid']
+    const dateindex = this.route.snapshot.params['dateindex']
+
     
+    const apiUrl = `http://localhost:3000/events/${eventid}/${dateindex}`;
+
+    this.http.post(apiUrl, this.formData)
+    .subscribe({
+      next: (response: any) => {
+        console.log('Post successful', response);
+        
+        this.formData = {
+          _id: '',
+          firstName: '',
+          lastName: '',
+          email: '',
+          phone: '',
+          address: '',
+          city: '',
+          postcode: ''
+        };
+      },
+      error: (error: any) => {
+        console.error('Error occurred', error);
+       
+      }
+    });
+}
 
   }
-}
