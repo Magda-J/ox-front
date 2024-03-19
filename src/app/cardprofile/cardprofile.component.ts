@@ -2,6 +2,8 @@ import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import { EventService } from '../services/event-add.service';
+
 
 @Component({
   selector: 'app-cardprofile',
@@ -10,26 +12,20 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   templateUrl: './cardprofile.component.html',
   styleUrl: './cardprofile.component.css'
 })
-export class CardprofileComponent {
+export class CardprofileComponent implements OnInit {
  
   events: Event[] = [];
 
-  constructor(private http: HttpClient) {}
+  constructor(private eventService: EventService) {}
 
   ngOnInit(): void {
     this.getEvents();
   }
 
   getEvents() {
-    this.http.get<Event[]>('http://localhost:3000/events')
-      .subscribe({
-        next: (data) => {
-          this.events = data;
-          console.log(this.events)
-        },
-        error: (error) => {
-          console.error('Error fetching events:', error);
-        }
+    this.eventService.getEvents()
+      .subscribe(events => {
+        this.events = events;
       });
   }
   
@@ -39,8 +35,8 @@ export interface Event {
   _id: string;
   eventName: string;
   eventImg: string;
-  // hostName: string;
   ratings: number;
   price: number;
+  description: string;
  
 }

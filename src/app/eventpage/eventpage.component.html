@@ -2,9 +2,9 @@
 
 
 <div class="relative sm:h-[350px]">
-  <div class="absolute inset-0">
+  <div class="absolute inset-0" *ngIf="event">
     <img
-      src="https://bookings.mlp.agency/images/venues/AAAABE9858/CyrNNiiJD8J7bi0nz5v9BtZBg3QL2BRZPB0wFA4H.jpg"
+    [src]="event.eventImg"
       class="object-cover w-full h-full"
       alt="Backround Image"
     />
@@ -17,9 +17,9 @@
       <div class="items-center justify-between xl:flex-row">
         <div class="w-full mb-12 xl:mb-0 xl:pr-16 xl:w-7/12">
           <h2
-            class="hover:text-orange-700 mb-6 font-sans text-3xl font-bold tracking-tight text-white sm:text-4xl sm:leading-none"
+            class="hover:text-orange-700 mb-6 font-sans text-3xl font-bold tracking-tight text-white sm:text-4xl sm:leading-none" *ngIf="event"
           >
-            Live Online Cookery Class with Jamie Oliver Cookery School   
+          {{ event.eventName }}  
          
           </h2>
           <img />
@@ -37,72 +37,20 @@
 
           <!-- Star rating start -->
 
-          <div class="flex items-center mb-5">
-            <svg
-              class="w-6 h-6 ms-2 text-yellow-300"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="currentColor"
-              viewBox="0 0 22 20"
-            >
-              <path
-                d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"
-              />
-            </svg>
-            <svg
-              class="w-6 h-6 ms-2 text-yellow-300"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="currentColor"
-              viewBox="0 0 22 20"
-            >
-              <path
-                d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"
-              />
-            </svg>
-            <svg
-              class="w-6 h-6 ms-2 text-yellow-300"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="currentColor"
-              viewBox="0 0 22 20"
-            >
-              <path
-                d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"
-              />
-            </svg>
-            <svg
-              class="w-6 h-6 ms-2 text-yellow-300"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="currentColor"
-              viewBox="0 0 22 20"
-            >
-              <path
-                d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"
-              />
-            </svg>
-            <svg
-              class="w-6 h-6 ms-2 text-gray-300 dark:text-gray-500"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="currentColor"
-              viewBox="0 0 22 20"
-            >
-              <path
-                d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"
-              />
-            </svg>
-
-            <p class="ms-1 text-sm font-medium text-white">4.95</p>
-            <p class="ms-1 text-sm font-medium text-white">out of</p>
-            <p class="ms-1 text-sm font-medium text-white">5</p>
-          </div>
-
+                    
+            <div class="flex items-center text-3xl text-yellow-400 ml-2" *ngIf="event">
+              <ng-container *ngFor="let star of [1, 2, 3, 4, 5]">
+                <ng-container *ngIf="star <= event.ratings; else emptyStar"
+                  >&#9733;</ng-container
+                >
+              </ng-container>
+              <ng-template #emptyStar>&#9734;</ng-template>
+            </div>
+          
           <!-- Star rating end -->
 
-          <p class="font-bold text-xl mt-8 text-white hover:text-orange-700">
-            £26/person
+          <p class="font-bold text-xl mt-8 text-white hover:text-orange-700" *ngIf="event">
+            £{{ event.price }}
           </p>
         </div>
       </div>
@@ -114,22 +62,8 @@
 
 <!-- Event description -->
 
-<p class="mt-6 px-6 text-justify text-sm sm:text-md leading-loose">
-  Indulge your culinary curiosity with an immersive Live Online Cookery Class
-  led by the renowned Jamie Oliver Cookery School. From the comfort of your own
-  kitchen, embark on a gastronomic journey guided by expert chefs who share
-  Jamie Oliver's passion for flavorful and accessible cooking. In these
-  interactive sessions, participants are invited to explore a diverse array of
-  cuisines, techniques, and recipes, all curated to inspire creativity and
-  confidence in the kitchen. Whether you're a novice or a seasoned home cook,
-  each class is designed to accommodate various skill levels, ensuring an
-  enjoyable and educational experience for all. With live demonstrations,
-  step-by-step instructions, and personalized feedback, you'll learn valuable
-  tips and tricks to elevate your cooking prowess. From mastering classic dishes
-  to experimenting with innovative flavors, these classes offer a dynamic
-  platform to expand your culinary repertoire and discover the joy of homemade
-  meals. Join a vibrant community of food enthusiasts from around the globe as
-  you connect, cook, and share your culinary creations in real-time.
+<p class="mt-6 px-6 text-justify text-sm sm:text-md leading-loose" *ngIf="event">
+  {{ event.description }}
 </p>
 
 <!-- Host information -->

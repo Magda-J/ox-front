@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
-import { EventAddService } from '../services/event-add.service';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
+
+import { EventService } from '../services/event-add.service';
+import { Event } from '../cardprofile/cardprofile.component';
 
 @Component({
   selector: 'app-eventpage',
@@ -10,23 +12,19 @@ import { CommonModule } from '@angular/common';
   templateUrl: './eventpage.component.html',
   styleUrl: './eventpage.component.css',
 })
-export class EventpageComponent {
-  id: any;
-  constructor(private activatedRoute: ActivatedRoute) {
-// ,private eventAddService: EventAddService
-  }
-    
+export class EventpageComponent implements OnInit {
+  event: Event | undefined;
 
-  ngOnInit() {
-    // this.eventAddService
-    //   .getAllEvents('http://localhost:3000/event/events/') 
-    //   .subscribe((events: Event[]) => { 
-    //     console.log(events);
-    //   });
-  
-  this.id = this.activatedRoute.snapshot.paramMap.get('id');
-    console.log(this.id);
-     
+  constructor(private route: ActivatedRoute, private eventService: EventService) {}
+
+  ngOnInit(): void {
+    const eventId = this.route.snapshot.paramMap.get('id');
+    if (eventId) {
+      this.eventService.getEvent(eventId)
+        .subscribe(event => {
+          this.event = event;
+          console.log(this.event)
+        });
     }
-  
+  }
 }

@@ -1,16 +1,21 @@
 import { Injectable } from '@angular/core';
-import { ApiService } from './api.service';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-
+import { Event } from '../cardprofile/cardprofile.component';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
-export class EventAddService {
+export class EventService {
+  constructor(private http: HttpClient) {}
 
-  constructor(private apiService: ApiService) { }
-
-  getAllEvents(url: string): Observable<Event[]> {
-    return this.apiService.get<Event[]>(url);
+  getEvents(): Observable<Event[]> {
+    return this.http.get<Event[]>('http://localhost:3000/events');
+  }
+  getEvent(id: string): Observable<Event | undefined> {
+    return this.getEvents().pipe(
+      map(events => events.find(event => event._id === id))
+    );
   }
 }
