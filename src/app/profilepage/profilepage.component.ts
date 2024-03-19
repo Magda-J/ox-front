@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { BioeditComponent } from '../bioedit/bioedit.component';
 import { CreateexperiencebuttonComponent } from '../createexperiencebutton/createexperiencebutton.component';
 import { CardprofileComponent } from '../cardprofile/cardprofile.component';
-import { HttpClientModule } from '@angular/common/http';
 
 
 @Component({
