@@ -13,5 +13,8 @@ import { CardprofileComponent } from '../cardprofile/cardprofile.component';
 })
 export class ProfilepageComponent {
 
+  
+
+
 
 }

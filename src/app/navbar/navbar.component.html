@@ -8,8 +8,12 @@
             <li><a href="#" class="text-orange-500 font-bold">Home</a></li>
             <li><a href="#" class="nav-link text-orange-500 hover:font-bold" routerLink="/profilepage" routerLinkActive="active">Profile</a></li>
             <li><a href="#" class="text-orange-500 hover:font-bold">About</a></li>
+            <!-- <div *ngIf="authService.currentUserSig() === null"> -->
             <li><a href="#" class="text-orange-500 hover:font-bold" routerLink="/login" routerLinkActive="active">Login</a></li>
             <li><a href="#" class="text-orange-500 hover:font-bold" routerLink="/register" routerLinkActive="active">Register</a></li>
+            <!-- </div> -->
+            <li>{{authService.currentUserSig()?.username}}<a href="#" class="text-orange-500 hover:font-bold" routerLink="/" routerLinkActive="active" (click)="logout()">Logout</a></li>
+
         </ul>
   
             <div id="mobile-menu" class="md:hidden">
@@ -22,8 +26,9 @@
                     <li><a href="#" class="text-orange-500 font-bold">Home</a></li>
                     <li><a href="#" class="nav-link text-orange-500 hover:font-bold" routerLink="/profilepage" routerLinkActive="active">Profile</a></li>
                     <li><a href="#" class="text-orange-500 hover:font-bold">About</a></li>
-                    <li><a href="#" class="text-orange-500 hover:font-bold" routerLink="/login" routerLinkActive="active">Login</a></li>
-                    <li><a href="#" class="text-orange-500 hover:font-bold" routerLink="/register" routerLinkActive="active">Register</a></li>
+                    <li ><a href="#" class="text-orange-500 hover:font-bold" routerLink="/login" routerLinkActive="active">Login</a></li>
+                    <li ><a href="#" class="text-orange-500 hover:font-bold" routerLink="/register" routerLinkActive="active">Register</a></li>
+                    <li >{{authService.currentUserSig()?.username}}<a href="#" class="text-orange-500 hover:font-bold" routerLink="/" routerLinkActive="active" (click)="logout()">Logout</a></li>
                 </ul>
             </div>
             
