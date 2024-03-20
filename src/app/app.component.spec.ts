@@ -17,7 +17,6 @@ describe('AppComponent', () => {
   it(`should have the 'ox-front' title`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('ox-front');
   });
 
   it('should render title', () => {

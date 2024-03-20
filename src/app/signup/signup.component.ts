@@ -1,40 +1,36 @@
-import { HttpClient } from '@angular/common/http';
-import { Component, inject } from '@angular/core';
-import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { UserInterface } from '../user.interface';
+import { Component } from '@angular/core';
 import { AuthService } from '../auth.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
-  standalone: true,
-  imports: [ReactiveFormsModule],
   templateUrl: './signup.component.html',
-  styleUrl: './signup.component.css'
+  styleUrls: ['./signup.component.css']
 })
 export class SignupComponent {
-  fb = inject(FormBuilder);
-  http = inject(HttpClient);
-  authService = inject(AuthService);
-  router = inject(Router)
+  form: any = {
+    username: null,
+    email: null,
+    password: null
+  };
+  isSuccessful = false;
+  isSignUpFailed = false;
+  errorMessage = '';
 
-  form = this.fb.nonNullable.group({
-    username: ['', Validators.required],
-    email: ['', Validators.required],
-    password: ['', Validators.required]
-  });
+  constructor(private authService: AuthService) { }
 
   onSubmit(): void {
-    this.http.post<{ user: UserInterface }>
-    ('https://api.realworld.io/api/users', 
-    {
-      user: this.form.getRawValue()
-    }
-    ).subscribe(response => {
-      console.log("response", response)
-      localStorage.setItem('token', response.user.token)
-      this.authService.currentUserSig.set(response.user);
-      this.router.navigateByUrl('/')
-    })
+    const { username, email, password } = this.form;
+
+    this.authService.register(username, email, password).subscribe({
+      next: data => {
+        console.log(data);
+        this.isSuccessful = true;
+        this.isSignUpFailed = false;
+      },
+      error: err => {
+        this.errorMessage = err.error.message;
+        this.isSignUpFailed = true;
+      }
+    });
   }
 }

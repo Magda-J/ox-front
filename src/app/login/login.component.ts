@@ -1,40 +1,51 @@
-import { HttpClient } from '@angular/common/http';
-import { Component, inject } from '@angular/core';
-import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { UserInterface } from '../user.interface';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
-import { Router } from '@angular/router';
+import { StorageService } from '../storage.service';
+
 @Component({
   selector: 'app-login',
-  standalone: true,
-  imports: [ReactiveFormsModule],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
-  fb = inject(FormBuilder);
-  http = inject(HttpClient);
-  authService = inject(AuthService);
-  router = inject(Router)
+export class LoginComponent implements OnInit {
+  form: any = {
+    username: null,
+    password: null
+  };
+  isLoggedIn = false;
+  isLoginFailed = false;
+  errorMessage = '';
+  roles: string[] = [];
 
+  constructor(private authService: AuthService, private storageService: StorageService) { }
 
-  form = this.fb.nonNullable.group({
-    email: ['', Validators.required],
-    password: ['', Validators.required]
-  })
-
-  onSubmit(): void {
-    this.http.post<{ user: UserInterface }>
-    ('https://api.realworld.io/api/users/login', 
-    {
-      user: this.form.getRawValue()
+  ngOnInit(): void {
+    if (this.storageService.isLoggedIn()) {
+      this.isLoggedIn = true;
+      this.roles = this.storageService.getUser().roles;
     }
-    ).subscribe(response => {
-      console.log("response", response)
-      localStorage.setItem('token', response.user.token)
-      this.authService.currentUserSig.set(response.user);
-      this.router.navigateByUrl('/')
-    })
   }
 
+  onSubmit(): void {
+    const { username, password } = this.form;
+
+    this.authService.login(username, password).subscribe({
+      next: data => {
+        this.storageService.saveUser(data);
+
+        this.isLoginFailed = false;
+        this.isLoggedIn = true;
+        this.roles = this.storageService.getUser().roles;
+        this.reloadPage();
+      },
+      error: err => {
+        this.errorMessage = err.error.message;
+        this.isLoginFailed = true;
+      }
+    });
+  }
+
+  reloadPage(): void {
+    window.location.reload();
+  }
 }

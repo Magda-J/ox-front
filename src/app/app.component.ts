@@ -1,39 +1,46 @@
-import { Component} from '@angular/core';
-import { RouterOutlet, RouterModule } from '@angular/router';
+import { Component } from '@angular/core';
+import { StorageService } from './storage.service';
 import { AuthService } from './auth.service';
-import { inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
-import { UserInterface } from './user.interface';
 
 @Component({
   selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet, RouterModule, CommonModule],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  authService = inject(AuthService)
-  http = inject(HttpClient)
-  title = 'ox-front';
+  private roles: string[] = [];
+  isLoggedIn = false;
+  showAdminBoard = false;
+  showModeratorBoard = false;
+  username?: string;
+
+  constructor(private storageService: StorageService, private authService: AuthService) { }
 
   ngOnInit(): void {
-    this.http.get<{ user: UserInterface }>('https://api.realworld.io/api/user')
-    .subscribe({
-      next: (response) => {
-        console.log('response', response);
-        this.authService.currentUserSig.set(response.user);
-      },
-      error: () => {
-        this.authService.currentUserSig.set(null);
-      }
-    });
+    this.isLoggedIn = this.storageService.isLoggedIn();
+
+    if (this.isLoggedIn) {
+      const user = this.storageService.getUser();
+      this.roles = user.roles;
+
+      this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
+      this.showModeratorBoard = this.roles.includes('ROLE_MODERATOR');
+
+      this.username = user.username;
+    }
   }
 
   logout(): void {
-    console.log("logout");
-    localStorage.setItem('token', '')
-    this.authService.currentUserSig.set(null);
+    this.authService.logout().subscribe({
+      next: res => {
+        console.log(res);
+        this.storageService.clean();
+
+        window.location.reload();
+      },
+      error: err => {
+        console.log(err);
+      }
+    });
   }
 }
