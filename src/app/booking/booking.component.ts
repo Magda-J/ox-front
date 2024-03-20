@@ -16,6 +16,7 @@ import { CommonModule } from '@angular/common';
 export class BookingComponent {
 
   eventData: any;
+  // totalPrice: string = '100.00'
 
   constructor(private http: HttpClient, private route: ActivatedRoute) {}
 
@@ -32,6 +33,7 @@ export class BookingComponent {
         next: (response: any) => {
           console.log('GET request successful', response);
           this.eventData = response;
+          // this.totalPrice = response.price.toString();
         },
         error: (error: any) => {
           console.error('Error occurred during GET request', error);
