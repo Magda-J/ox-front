@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking</title>
+</head>
+<body class="w-screen h-screen flex m-0 p-0">
+    <div *ngIf="eventData" class="h-screen md:w-1/2 bg-orange-500 hidden md:flex flex-col justify-center items-center">
+        <p class="text-lg font-medium">You're about to book</p>
+        <h2 class='text-4xl font-bold mt-2'>{{ eventData.eventName }}</h2>
+        <div class="flex gap-3 items-center mt-8">
+            <p class="text-sm font-medium">Hosted by <span class="font-bold">{{ eventData.hostName }}</span></p>
+            <img class="w-14 h-14 object-cover rounded-full" [src]='eventData.hostProfilePic' alt="Host Profile Pic">
+        </div>
+    </div>
+        
+    <div class="h-screen w-full md:w-1/2">
+        <form action="" class="h-[475px] w-[350px] mx-auto mt-16 border p-4 flex flex-col justify-between drop-shadow-sm">
+            <h1 class="text-lg font-semibold">Please fill in details below</h1>
+            <div class="flex flex-col gap-8 text-sm">
+                <div class="flex gap-4">
+                    <input [(ngModel)]="formData.firstName" name="first-name" type="text" placeholder="First Name" class="w-full border rounded-md p-1" required >
+                    <input [(ngModel)]="formData.lastName" name="last-name" type="text" placeholder="Last Name" class="w-full border rounded-md p-1" required>
+                </div>
+                <input [(ngModel)]="formData.email" name='email' type="email" placeholder="Email" class="w-full border rounded-md p-1" required>
+                <input [(ngModel)]="formData.phone" name="phone" name="phone" type="tel" placeholder="Phone Number" class="w-full border rounded-md p-1">
+                <input [(ngModel)]="formData.address" name="address" type="text" placeholder="Address" class="w-full border rounded-md p-1">
+                <div class='flex gap-8'>
+                    <input [(ngModel)]="formData.city" name="city" type="text" placeholder="City" class="w-full border rounded-md p-1">
+                    <input [(ngModel)]="formData.postcode" name="postcode" type="text" placeholder="Postcode" class="w-full border rounded-md p-1">
+                </div>
+            </div>
+            <google-pay-button
+            environment="TEST"
+            buttonColor="black"
+            buttonType="buy"
+            [paymentRequest]="paymentRequest" [style.width.px]="buttonWidth"
+            (loadpaymentdata)="onLoadPaymentData($event)"
+            class="mx-auto"
+            (click)="onClick()"
+            >
+            </google-pay-button>
+            <!-- <button id="book-btn" class="border h-16 rounded-md bg-orange-500 font-semibold hover:bg-orange-400 hover:drop-shadow-lg transition">Payment</button> -->
+        </form>
+    </div>
+</body>
+</html>
