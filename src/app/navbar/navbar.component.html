@@ -6,8 +6,10 @@
         </div>
         <ul class="hidden md:flex text-lg space-x-4 border-l-2 border-orange-500 p-4 bg-orange-800/10 hover:bg-orange-200/80 rounded-tr-lg rounded-br-lg"> 
             <li><a href="#" class="text-orange-500 font-bold">Home</a></li>
-            <li><a href="#" class="text-orange-500 hover:font-bold">Profile</a></li>
+            <li><a href="#" class="nav-link text-orange-500 hover:font-bold" routerLink="/profilepage" routerLinkActive="active">Profile</a></li>
             <li><a href="#" class="text-orange-500 hover:font-bold">About</a></li>
+            <li><a href="#" class="text-orange-500 hover:font-bold" routerLink="/login" routerLinkActive="active">Login</a></li>
+            <li><a href="#" class="text-orange-500 hover:font-bold" routerLink="/register" routerLinkActive="active">Register</a></li>
         </ul>
   
             <div id="mobile-menu" class="md:hidden">
@@ -18,8 +20,10 @@
                 </div>
                 <ul class="mr-4 bg-orange-100 p-2 rounded" [class.hidden]="isMenuHidden">
                     <li><a href="#" class="text-orange-500 font-bold">Home</a></li>
-                    <li><a href="#" class="text-orange-500 hover:font-bold">Profile</a></li>
+                    <li><a href="#" class="nav-link text-orange-500 hover:font-bold" routerLink="/profilepage" routerLinkActive="active">Profile</a></li>
                     <li><a href="#" class="text-orange-500 hover:font-bold">About</a></li>
+                    <li><a href="#" class="text-orange-500 hover:font-bold" routerLink="/login" routerLinkActive="active">Login</a></li>
+                    <li><a href="#" class="text-orange-500 hover:font-bold" routerLink="/register" routerLinkActive="active">Register</a></li>
                 </ul>
             </div>
             

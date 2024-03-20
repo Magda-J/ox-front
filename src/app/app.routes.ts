@@ -2,6 +2,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { EventpageComponent } from './eventpage/eventpage.component';
 import { FormComponent } from './form/form.component';
 import { ProfilepageComponent } from './profilepage/profilepage.component';
+import { LoginPageComponent } from './login-page/login-page.component';
+import { RegisterPageComponent } from './register-page/register-page.component';
 
 export const routes: Routes = [
     {
@@ -27,5 +29,15 @@ export const routes: Routes = [
     path: 'profilepage',
     title: 'Profile Page',
     component: ProfilepageComponent,
+  },
+  {
+    path: 'login',
+    title: 'Login Page',
+    component: LoginPageComponent,
+  },
+  {
+    path: 'register',
+    title: 'Register Page',
+    component: RegisterPageComponent,
   },
 ];
