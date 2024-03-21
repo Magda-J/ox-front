@@ -9,6 +9,7 @@
     <div *ngIf="eventData" class="h-screen md:w-1/2 bg-orange-500 hidden md:flex flex-col justify-center items-center">
         <p class="text-lg font-medium">You're about to book</p>
         <h2 class='text-4xl font-bold mt-2'>{{ eventData.eventName }}</h2>
+        <p class="mt-2">On <span class="font-bold">{{ eventData.dates[0].date[dateindex].slice(0,10) }}</span></p>
         <div class="flex gap-3 items-center mt-8">
             <p class="text-sm font-medium">Hosted by <span class="font-bold">{{ eventData.hostName }}</span></p>
             <img class="w-14 h-14 object-cover rounded-full" [src]='eventData.hostProfilePic' alt="Host Profile Pic">

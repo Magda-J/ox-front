@@ -32,11 +32,11 @@ export class FormComponent implements OnInit {
       tags: [],
       description: '',
       dates: [{
-      date: [],
-      starttime: [],
-      endtime: [],
-      spaces: []
-    }]
+        date: [],
+        starttime: [],
+        endtime: [],
+        spaces: []
+      }]
   };
 
   constructor(private http: HttpClient) {}
@@ -82,8 +82,8 @@ export interface EventData {
   tags: string[],
   description: string
   dates: [{
-  date: Date[],
-  starttime: string[],
-  endtime: string[],
-  spaces: number[]}],
-};
+    date: Date[],
+    starttime: string[],
+    endtime: string[],
+    spaces: number[]}],
+  };
