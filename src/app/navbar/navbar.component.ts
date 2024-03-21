@@ -17,9 +17,17 @@ export class NavbarComponent implements OnInit {
     this.isMenuHidden = !this.isMenuHidden;
   }
 
+  
+ 
+ 
   authService = inject(AuthService)
 
-ngOnInit(): void {}
+ngOnInit(): void {
+  // console.log('isLoggedIn:', this.isLoggedIn());
+}
+// isLoggedIn(): boolean {
+//   return this.authService.getCurrentUser() !== null;
+// }
 
 logout(): void {
   console.log('logout')

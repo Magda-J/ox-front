@@ -20,13 +20,7 @@ export class LoginPageComponent {
     password: '',
   };
 
-  // fb = inject(FormBuilder);
-  // authService = inject(AuthService)
-  
-  // form = this.fb.nonNullable.group({
-  //   username: ['', Validators.required],
-  //   password: ['', Validators.required]
-  // })
+ 
 
 
   constructor(
@@ -44,8 +38,17 @@ export class LoginPageComponent {
       next: (response: any) => {
         console.log('Post successful', response);
         localStorage.setItem('token', response.token)
-        // this.authService.currentUserSig.set(response)
-        console.log("USER", response)
+        localStorage.setItem('username', response.username)
+        
+        
+        const userData: UserData = {
+          username: response.username,
+          password: response.password
+        };
+        // this.authService.setCurrentUser(userData);
+        // console.log('Set current user:', userData);
+        
+        
         this.router.navigateByUrl('/profilepage')
         
         this.user = {
