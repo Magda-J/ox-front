@@ -1,5 +1,5 @@
-import { CommonModule } from '@angular/common';
-import { Component, OnInit, inject } from '@angular/core';
+import { CommonModule, DOCUMENT } from '@angular/common';
+import { Component, Inject, OnInit, inject } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { HttpClient } from '@angular/common/http';
@@ -23,14 +23,21 @@ export class NavbarComponent implements OnInit {
   authService = inject(AuthService)
 
 ngOnInit(): void {
-  // console.log('isLoggedIn:', this.isLoggedIn());
+  
 }
-// isLoggedIn(): boolean {
-//   return this.authService.getCurrentUser() !== null;
-// }
+
 
 logout(): void {
-  console.log('logout')
+  console.log('logout');
+  localStorage.setItem('token', '')
+  localStorage.setItem('username', '')
+  localStorage.setItem('rating', '')
+}
+
+constructor(@Inject(DOCUMENT) private document: Document) { }
+
+isTokenPresent(): boolean {
+  return !!this.document.defaultView?.localStorage.getItem('token');
 }
 
 }

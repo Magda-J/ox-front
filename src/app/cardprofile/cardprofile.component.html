@@ -17,7 +17,7 @@
           class="card-text absolute bottom-0 left-0 p-4 m-4 md:font-bold text-white bg-black/10 hover:bg-black/40 rounded"
         >
           <div class="ml-2">{{ event.eventName }}</div>
-          <div class="ml-2 hidden md:block">Username</div>
+          <div class="ml-2 hidden md:block">{{ username }}</div>
           <div class="flex items-center text-3xl text-yellow-400 ml-2">
             <ng-container *ngFor="let star of [1, 2, 3, 4, 5]">
               <ng-container *ngIf="star <= event.ratings; else emptyStar"

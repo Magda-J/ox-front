@@ -39,6 +39,7 @@ export class LoginPageComponent {
         console.log('Post successful', response);
         localStorage.setItem('token', response.token)
         localStorage.setItem('username', response.username)
+        localStorage.setItem('rating', response.rating)
         
         
         const userData: UserData = {

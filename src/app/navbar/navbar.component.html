@@ -14,7 +14,7 @@
       class="hidden md:flex text-lg space-x-4 border-l-2 border-orange-500 p-4 bg-orange-800/10 hover:bg-orange-200/80 rounded-tr-lg rounded-br-lg"
     >
       <li><a href="#" class="text-orange-500 font-bold">Home</a></li>
-      <li>
+      <li *ngIf="isTokenPresent()">
         <a
           href="#"
           class="nav-link text-orange-500 hover:font-bold"
@@ -25,7 +25,7 @@
       </li>
       <li><a href="#" class="text-orange-500 hover:font-bold">About</a></li>
      
-        <li > 
+        <li *ngIf="!isTokenPresent()"> 
 
           <a
             href="#"
@@ -36,7 +36,7 @@
           >
 
         </li>
-        <li    >
+        <li *ngIf="!isTokenPresent()">
       
           <a
             href="#"
@@ -47,7 +47,7 @@
           >
         </li>
      
-      <li>
+      <li *ngIf="isTokenPresent()">
        <a
           href="#"
           class="text-orange-500 hover:font-bold"
@@ -72,7 +72,7 @@
       </div>
       <ul class="mr-4 bg-orange-100 p-2 rounded" [class.hidden]="isMenuHidden">
         <li><a href="#" class="text-orange-500 font-bold">Home</a></li>
-        <li>
+        <li *ngIf="isTokenPresent()">
           <a
             href="#"
             class="nav-link text-orange-500 hover:font-bold"
@@ -82,7 +82,7 @@
           >
         </li>
         <li><a href="#" class="text-orange-500 hover:font-bold">About</a></li>
-        <li>
+        <li *ngIf="!isTokenPresent()">
           <a
             href="#"
             class="text-orange-500 hover:font-bold"
@@ -91,7 +91,7 @@
             >Login</a
           >
         </li>
-        <li>
+        <li *ngIf="!isTokenPresent()">
           <a
             href="#"
             class="text-orange-500 hover:font-bold"
@@ -100,7 +100,7 @@
             >Register</a
           >
         </li>
-        <li>
+        <li *ngIf="isTokenPresent()">
           <a
             href="#"
             class="text-orange-500 hover:font-bold"
