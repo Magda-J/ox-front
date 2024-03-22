@@ -11,6 +11,17 @@ export const routes: Routes = [
         loadComponent: () => import('./booking/booking.component').then((c)=>c.BookingComponent)
         },
   {
+    path: 'eventpageUser/:id',
+    title: 'Event',
+    loadComponent: () =>
+      import('./eventpageUser/eventpageUser.component').then(
+        (c) => c.EventpageUserComponent
+      ),
+
+    // component: EventpageComponent,
+  },
+
+  {
     path: 'eventpage/:id',
     title: 'Event',
     loadComponent: () =>
@@ -19,6 +30,18 @@ export const routes: Routes = [
       ),
 
     // component: EventpageComponent,
+  },
+
+
+  {
+    path: 'form/:id',
+    title: 'Form',
+    loadComponent: () =>
+      import('./form/form.component').then(
+        (c) => c.FormComponent
+      ),
+
+    
   },
   {
     path: 'form',

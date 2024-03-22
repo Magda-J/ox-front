@@ -9,10 +9,10 @@ import { Event } from '../cardprofile/cardprofile.component';
   selector: 'app-eventpage',
   standalone: true,
   imports: [CommonModule, RouterLink],
-  templateUrl: './eventpage.component.html',
-  styleUrl: './eventpage.component.css',
+  templateUrl: './eventpageUser.component.html',
+  styleUrl: './eventpageUser.component.css',
 })
-export class EventpageComponent implements OnInit {
+export class EventpageUserComponent implements OnInit {
   event: Event | undefined;
 
   constructor(private route: ActivatedRoute, private eventService: EventService) {}
