@@ -31,12 +31,10 @@ export class FormComponent implements OnInit {
       price: 0,
       tags: [],
       description: '',
-      dates: [{
-        date: [],
-        starttime: [],
-        endtime: [],
-        spaces: []
-      }]
+      date: '',
+      starttime: '',
+      endtime: '',
+      spaces: 0
   };
 
   constructor(private http: HttpClient) {}
@@ -58,12 +56,10 @@ export class FormComponent implements OnInit {
             price: 0,
             tags: [],
             description: '',
-            dates: [{
-              date: [],
-              starttime: [],
-              endtime: [],
-              spaces: []
-            }]
+            date: '',
+            starttime: '',
+            endtime: '',
+            spaces: 0
           };
         },
         error: (error: any) => {
@@ -81,9 +77,8 @@ export interface EventData {
   price: number,
   tags: string[],
   description: string
-  dates: [{
-    date: Date[],
-    starttime: string[],
-    endtime: string[],
-    spaces: number[]}],
+  date: string,
+  starttime: string,
+  endtime: string,
+  spaces: number,
   };

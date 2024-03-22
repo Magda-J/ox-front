@@ -13,7 +13,7 @@ export const routes: Routes = [
       ),
   },
   {
-    path: 'eventpage/:eventid/:dateindex', title: 'Event', 
+    path: 'eventpage/:eventid/booking', title: 'Event', 
     loadComponent: () => import('./booking/booking.component').then((c)=>c.BookingComponent)
   },
   {

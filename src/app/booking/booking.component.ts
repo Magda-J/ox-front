@@ -99,10 +99,9 @@ export class BookingComponent {
 
     console.log(this.formData);
     const eventid = this.route.snapshot.params['eventid']
-    const dateindex = this.route.snapshot.params['dateindex']
 
     
-    const apiUrl = `http://localhost:3000/events/${eventid}/${dateindex}`;
+    const apiUrl = `http://localhost:3000/events/${eventid}/booking`;
 
     this.http.post(apiUrl, this.formData)
     .subscribe({
