@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
 import { BioeditComponent } from '../bioedit/bioedit.component';
 import { CreateexperiencebuttonComponent } from '../createexperiencebutton/createexperiencebutton.component';
-import { CardprofileComponent } from '../cardprofile/cardprofile.component';
+import { CardprofileComponent } from '../cardprofile/cardprofile.component'; 
+import { NavbarComponent } from '../navbar/navbar.component';
 
 
 @Component({
   selector: 'app-profilepage',
   standalone: true,
-  imports: [BioeditComponent, CreateexperiencebuttonComponent, CardprofileComponent],
+  imports: [BioeditComponent, CreateexperiencebuttonComponent, CardprofileComponent, NavbarComponent],
   templateUrl: './profilepage.component.html',
   styleUrl: './profilepage.component.css'
 })

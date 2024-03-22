@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -10,8 +10,15 @@ import { CommonModule } from '@angular/common';
 })
 export class CategoryButtonsComponent {
   showCategories = false;
+  categories: string[] = ['All', 'Creative Arts', 'Language Learning', 'DIY and Crafts', 'Fitness and Wellness', 'Entrepreneurship', 'Science and Nature', 'Travel and Culture', 'Hobbies and Interests', 'Other'];
 
   toggleCategories() {
     this.showCategories = !this.showCategories;
+  }
+
+  @Output() categorySelected = new EventEmitter<string>();
+
+  selectCategory(category: string) {
+    this.categorySelected.emit(category);
   }
 }

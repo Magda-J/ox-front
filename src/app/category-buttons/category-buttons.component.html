@@ -1,18 +1,12 @@
 <div class="flex flex-wrap gap-2 mt-[30px] md:mt-[55px] mr-2 ml-2 fixed z-40 justify-center w-half md:w-full">
-        <button class="bg-orange-800 hover:bg-orange-500 text-white font-bold py-2 px-4 rounded" (click)="toggleCategories()">
-            {{ showCategories ? 'Hide Categories' : 'Show Categories' }}
-          </button>
-    <ng-container *ngIf="showCategories">
-      <button class="bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded">All</button>
-      <button class="bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded">Creative Arts</button>
-      <button class="bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded">Language Learning</button>
-      <button class="bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded">DIY and Crafts</button>
-      <button class="bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded">Fitness and Wellness</button>
-      <button class="bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded">Entrepreneurship</button>
-      <button class="bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded">Science and Nature</button>
-      <button class="bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded">Travel and Culture</button>
-      <button class="bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded">Hobbies and Interests</button>
-      <button class="bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded">Other</button>
-    </ng-container>
-  </div>
-  
+  <button class="bg-orange-800 hover:bg-orange-500 text-white font-bold py-2 px-4 rounded" (click)="toggleCategories()">
+    {{ showCategories ? 'Hide Categories' : 'Show Categories' }}
+  </button>
+  <ng-container *ngIf="showCategories">
+    <button *ngFor="let category of categories" 
+            class="bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded" 
+            (click)="selectCategory(category)">
+      {{ category }}
+    </button>
+  </ng-container>
+</div>
