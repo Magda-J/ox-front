@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { RouterLink, RouterLinkActive, Router} from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -13,5 +13,11 @@ export class NavbarComponent {
   toggleMenu() {
     this.isMenuHidden = !this.isMenuHidden;
   }
+
+  constructor(private router: Router) {}
+
+  isActive(url: string): boolean {
+    return this.router.url === url;
+}
 
 }
