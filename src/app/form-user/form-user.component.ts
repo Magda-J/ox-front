@@ -5,15 +5,17 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { NavbarComponent } from '../navbar/navbar.component';
+import { ActivatedRoute } from '@angular/router';
+
 
 @Component({
-  selector: 'app-form',
+  selector: 'app-form-user',
   standalone: true,
   imports: [DropdownComponent, CommonModule, FormsModule, NavbarComponent],
-  templateUrl: './form.component.html',
-  styleUrl: './form.component.css',
+  templateUrl: './form-user.component.html',
+  styleUrl: './form-user.component.css'
 })
-export class FormComponent implements OnInit {
+export class FormUserComponent implements OnInit {
   showEvents: boolean = false;
 
   username: string | null = null;
@@ -23,6 +25,7 @@ export class FormComponent implements OnInit {
     this.username = localStorage.getItem('username');
     const ratingString = localStorage.getItem('rating');
     this.rating = ratingString ? parseFloat(ratingString) : null;
+   
 
 
 
@@ -31,7 +34,7 @@ export class FormComponent implements OnInit {
     this.showEvents = !this.showEvents;
   }
 
-  event: EventData = {
+  eventUser: EventDataUser = {
     eventName: '',
     eventImg: '',
     price: 0,
@@ -47,18 +50,19 @@ export class FormComponent implements OnInit {
     ],
   };
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private route: ActivatedRoute) {}
 
   onSubmit() {
-    console.log(this.event);
-    const apiUrl = 'http://localhost:3000/events/postevent';
+    console.log(this.eventUser);
+    const eventid = this.route.snapshot.params['id'];
+    const apiUrl = `http://localhost:3000/events/${eventid}`;
 
-    // HTTP POST request
-    this.http.post(apiUrl, this.event).subscribe({
+    // HTTP PUT request
+    this.http.put(apiUrl, this.eventUser).subscribe({
       next: (response: any) => {
-        console.log('Post successful', response);
+        console.log('Edit successful', response);
 
-        this.event = {
+        this.eventUser = {
           eventName: '',
           eventImg: '',
           price: 0,
@@ -81,7 +85,7 @@ export class FormComponent implements OnInit {
   }
 }
 
-export interface EventData {
+export interface EventDataUser {
   eventName: string;
   eventImg: string;
   price: number;
@@ -96,3 +100,4 @@ export interface EventData {
     }
   ];
 }
+

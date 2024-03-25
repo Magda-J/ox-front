@@ -34,11 +34,11 @@ export const routes: Routes = [
 
 
   {
-    path: 'form/:id',
+    path: 'formUser/:id',
     title: 'Form',
     loadComponent: () =>
-      import('./form/form.component').then(
-        (c) => c.FormComponent
+      import('./form-user/form-user.component').then(
+        (c) => c.FormUserComponent
       ),
 
     
