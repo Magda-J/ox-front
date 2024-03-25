@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { BioeditComponent } from '../bioedit/bioedit.component';
 import { CreateexperiencebuttonComponent } from '../createexperiencebutton/createexperiencebutton.component';
+
 import { CardprofileComponent } from '../cardprofile/cardprofile.component';
 import { CommonModule } from '@angular/common';
 import { NavbarComponent } from '../navbar/navbar.component';
@@ -9,10 +10,15 @@ import { UserProfileData } from '../../types';
 import { FormsModule } from '@angular/forms';
 
 
+
+
+
 @Component({
   selector: 'app-profilepage',
   standalone: true,
+
   imports: [BioeditComponent, CreateexperiencebuttonComponent, CardprofileComponent, CommonModule, NavbarComponent, FormsModule],
+
   templateUrl: './profilepage.component.html',
   styleUrl: './profilepage.component.css'
 })

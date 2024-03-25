@@ -1,8 +1,12 @@
+
 import { CommonModule, DOCUMENT } from '@angular/common';
 import { Component, Inject, OnInit, inject } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { HttpClient } from '@angular/common/http';
+
+
+
 
 @Component({
   selector: 'app-navbar',
@@ -17,10 +21,11 @@ export class NavbarComponent implements OnInit {
     this.isMenuHidden = !this.isMenuHidden;
   }
 
+
   
  
  
-  authService = inject(AuthService)
+authService = inject(AuthService)
 
 ngOnInit(): void {
   
@@ -41,6 +46,13 @@ constructor(@Inject(DOCUMENT) private document: Document) { }
 
 isTokenPresent(): boolean {
   return !!this.document.defaultView?.localStorage.getItem('token');
+
+//   MJ commented out during merging 
+//   constructor(private router: Router) {}
+
+//   isActive(url: string): boolean {
+//     return this.router.url === url;
+
 }
 
 }

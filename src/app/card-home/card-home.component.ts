@@ -1,19 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 
 
 @Component({
   selector: 'app-card-home',
   standalone: true,
-  imports: [CommonModule, ],
+  imports: [CommonModule, RouterLink, RouterLinkActive],
   templateUrl: './card-home.component.html',
   styleUrls: ['./card-home.component.css'],
 })
 
 export class CardHomeComponent implements OnInit {
-
+  @Input() selectedCategory: string = 'All';
   events: EventData[] = [];  
+  filteredEvents: EventData[] = [];
 
   constructor(private http: HttpClient) {}
 
@@ -26,6 +28,7 @@ export class CardHomeComponent implements OnInit {
       .subscribe({
         next: (data) => {
           this.events = data;
+          this.filterEvents();
           console.log('Events data:', this.events);
         },
         error: (error) => {
@@ -34,9 +37,23 @@ export class CardHomeComponent implements OnInit {
       });
   }
   
+  filterEvents(): void {
+    if (this.selectedCategory === 'All') {
+      this.filteredEvents = this.events;
+    } else {
+      this.filteredEvents = this.events.filter(event => event.tags.includes(this.selectedCategory));
+    }
+  }
+
+  onCategorySelected(category: string): void {
+    this.selectedCategory = category;
+    this.filterEvents();
+  }
+
 }
 
 export interface EventData {
+  _id: string;
   eventName: string;
   eventImg: string;    
   price: number;

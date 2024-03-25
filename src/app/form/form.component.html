@@ -95,7 +95,7 @@
         <!--  checkbox -->
 
         <!-- Date and time -->
-        <p class="pb-2 pt-2">Event Date No.1</p>
+        <p class="pb-2 pt-2">Event Date</p>
         <div class="flex flex-row space-x-4">
           <div class="relative z-0 w-full mb-5">
             <input
@@ -104,7 +104,7 @@
               placeholder=" "
               onclick="this.setAttribute('type', 'date');"
               class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
-              [(ngModel)] = "event.dates[0].date[0]"
+              [(ngModel)] = "event.date"
               />
             <label
               for="date"
@@ -122,7 +122,7 @@
               placeholder=" "
               onclick="this.setAttribute('type', 'time');"
               class="time-input pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
-              [(ngModel)] = "event.dates[0].starttime[0]"
+              [(ngModel)] = "event.starttime"
               />
             <label
               for="time"
@@ -137,7 +137,7 @@
               placeholder=" "
               onclick="this.setAttribute('type', 'time');"
               class="time-input pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
-              [(ngModel)] = "event.dates[0].endtime[0]"
+              [(ngModel)] = "event.endtime"
               />
             <label
               for="time"
@@ -153,7 +153,7 @@
             value=""
             onclick="this.setAttribute('value', this.value);"
             class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none z-1 focus:outline-none focus:ring-0 focus:border-black border-gray-200"
-            [(ngModel)] = "event.dates[0].spaces[0]"
+            [(ngModel)] = "event.spaces"
             >
             <option value="" selected disabled hidden></option>
             <option value="1">1</option>
@@ -176,180 +176,7 @@
             >Option has to be selected</span
           >
         </div>
-
-        <!-- Event No.2 -->
-        <button
-          id="toggleButton"
-          type="button"
-          class="w-full px-4 py-2 mb-4 bg-orange-500 text-white rounded-md hover:bg-orange-600"
-          (click)="toggleEvents()"
-        >
-          Add More Dates
-        </button>
-
-        <!-- Event No.2 and Event No.3 sections -->
-        <div *ngIf="showEvents">
-          <p class="pb-2 pt-2">Event Date No.2</p>
-
-          <div class="flex flex-row space-x-4">
-            <div class="relative z-0 w-full mb-5">
-              <input
-                type="text"
-                name="date"
-                placeholder=" "
-                onclick="this.setAttribute('type', 'date');"
-                class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
-              [(ngModel)] = "event.dates[0].date[1]"
-              />
-              <label
-                for="date"
-                class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500"
-                >Date</label
-              >
-              <span class="text-sm text-red-600 hidden" id="error"
-                >Date is required</span
-              >
-            </div>
-            <div class="relative z-0 w-full">
-              <input
-                type="text"
-                name="time"
-                placeholder=" "
-                onclick="this.setAttribute('type', 'time');"
-                class="time-input pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
-                [(ngModel)] = "event.dates[0].starttime[1]"
-                />
-              <label
-                for="time"
-                class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500"
-                >Time</label
-              >
-            </div>
-            <div class="relative z-0 w-full">
-              <input
-                type="text"
-                name="time"
-                placeholder=" "
-                onclick="this.setAttribute('type', 'time');"
-                class="time-input pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
-                [(ngModel)] = "event.dates[0].endtime[1]"
-                />
-              <label
-                for="time"
-                class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500"
-                > End Time</label>
-              
-            </div>
-          </div>
-          <div class="relative z-0 w-full mb-5">
-            <select
-              name="select"
-              value=""
-              onclick="this.setAttribute('value', this.value);"
-              class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none z-1 focus:outline-none focus:ring-0 focus:border-black border-gray-200"
-              [(ngModel)] = "event.dates[0].spaces[1]"
-            >
-              <option value="" selected disabled hidden></option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
-              <option value="7">7</option>
-              <option value="8">8</option>
-              <option value="9">9</option>
-              <option value="10">10</option>
-            </select>
-            <label
-              for="select"
-              class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500"
-              >Select a number of available spaces
-            </label>
-          </div>
-        </div>
-
-        <!-- Event No.3 -->
-
-        <div *ngIf="showEvents">
-          <p class="pb-2 pt-2">Event Date No.3</p>
-          <div class="flex flex-row space-x-4">
-            <div class="relative z-0 w-full mb-5">
-              <input
-                type="text"
-                name="date"
-                placeholder=" "
-                onclick="this.setAttribute('type', 'date');"
-                class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
-                [(ngModel)] = "event.dates[0].date[2]"
-                />
-              <label
-                for="date"
-                class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500"
-                >Date</label
-              >
-              <span class="text-sm text-red-600 hidden" id="error"
-                >Date is required</span
-              >
-            </div>
-            <div class="relative z-0 w-full">
-              <input
-                type="text"
-                name="time"
-                placeholder=" "
-                onclick="this.setAttribute('type', 'time');"
-                class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
-                [(ngModel)] = "event.dates[0].starttime[2]"
-                />
-              <label
-                for="time"
-                class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500"
-                >Time</label
-              >
-            </div>
-            <div class="relative z-0 w-full">
-              <input
-                type="text"
-                name="time"
-                placeholder=" "
-                onclick="this.setAttribute('type', 'time');"
-                class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
-                [(ngModel)] = "event.dates[0].endtime[2]"
-                />
-              <label
-                for="time"
-                class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500"
-                > End Time</label>
-              
-            </div>
-          </div>
-          <div class="relative z-0 w-full mb-5">
-            <select
-              name="select"
-              value=""
-              onclick="this.setAttribute('value', this.value);"
-              class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none z-1 focus:outline-none focus:ring-0 focus:border-black border-gray-200"
-              [(ngModel)] = "event.dates[0].spaces[2]"
-              >
-              <option value="" selected disabled hidden></option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
-              <option value="7">7</option>
-              <option value="8">8</option>
-              <option value="9">9</option>
-              <option value="10">10</option>
-            </select>
-            <label
-              for="select"
-              class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500"
-              >Select a number of available spaces</label
-            >
-          </div>
-        </div>
+          
         <div class="relative z-0 w-full mb-5">
           <input
             type="number"
@@ -534,12 +361,12 @@
                     <h2
                       class="text-lg font-medium text-gray-700 sm:text-2xl dark:text-gray-200"
                     >
-                    {{event.dates[0].date[0] | json}}
+                    {{event.date | json}}
                     </h2>
                     <div
                       class="px-2 text-xs text-orange-500 bg-gray-100 rounded-full sm:px-4 sm:py-1 dark:bg-gray-700"
                     >
-                    {{event.dates[0].starttime[0] | json}} - {{event.dates[0].endtime[0] | json}} (GMT)
+                    {{event.starttime | json}} - {{event.endtime | json}} (GMT)
                     </div>
                   </div>
                 </div>
@@ -549,7 +376,7 @@
                 >
                   9
                   <span class="text-md sm:text-base font-medium"
-                    >/ {{event.dates[0].spaces[0] | json}} spots remaining</span
+                    >/ {{event.spaces | json}} spots remaining</span
                   >
                 </h2>
                 <button
@@ -558,70 +385,7 @@
                   Book
                 </button>
               </div>
-              <div
-                class="flex items-center justify-between max-w-2xl sm:px-4 py-4 mx-auto border cursor-pointer rounded-xl dark:border-gray-700"
-              >
-                <div class="flex items-center">
-                  <div class="flex flex-col items-center mx-5 space-y-1">
-                    <h2
-                      class="text-lg font-medium text-gray-700 sm:text-2xl dark:text-gray-200"
-                    >
-                    {{event.dates[0].date[1] | json}}
-                    </h2>
-                    <div
-                      class="px-2 text-xs text-orange-500 bg-gray-100 rounded-full sm:px-4 sm:py-1 dark:bg-gray-700"
-                    >
-                    {{event.dates[0].starttime[1] | json}} - {{event.dates[0].endtime[1] | json}} (GMT)
-                    </div>
-                  </div>
-                </div>
 
-                <h2
-                  class="text-md font-semibold text-gray-500 sm:text-3xl dark:text-gray-300"
-                >
-                  10
-                  <span class="text-md sm:text-base font-medium"
-                    >/{{event.dates[0].spaces[1] | json}} spots remaining</span
-                  >
-                </h2>
-                <button
-                  class="ml-2 px-8 py-2 mr-2 tracking-wide text-white capitalize transition-colors duration-200 transform bg-orange-600 rounded-md hover:bg-orange-300 focus:outline-none focus:bg-orange-400 focus:ring focus:ring-blue-300 focus:ring-opacity-80"
-                >
-                  Book
-                </button>
-              </div>
-              <div
-                class="flex items-center justify-between max-w-2xl sm:px-4 py-4 mx-auto border cursor-pointer rounded-xl dark:border-gray-700"
-              >
-                <div class="flex items-center">
-                  <div class="flex flex-col items-center mx-5 space-y-1">
-                    <h2
-                      class="text-lg font-medium text-gray-700 sm:text-2xl dark:text-gray-200"
-                    >
-                    {{event.dates[0].date[2] | json}}
-                    </h2>
-                    <div
-                      class="px-2 text-xs text-orange-500 bg-gray-100 rounded-full sm:px-4 sm:py-1 dark:bg-gray-700"
-                    >
-                    {{event.dates[0].starttime[2] | json}} - {{event.dates[0].endtime[2] | json}} (GMT)
-                    </div>
-                  </div>
-                </div>
-
-                <h2
-                  class="text-md font-semibold text-gray-500 sm:text-3xl dark:text-gray-300"
-                >
-                  6
-                  <span class="text-md sm:text-base font-medium"
-                    >/{{event.dates[0].spaces[2] | json}} spots remaining</span
-                  >
-                </h2>
-                <button
-                  class="ml-2 px-8 py-2 mr-2 tracking-wide text-white capitalize transition-colors duration-200 transform bg-orange-600 rounded-md hover:bg-orange-300 focus:outline-none focus:bg-orange-400 focus:ring focus:ring-blue-300 focus:ring-opacity-80"
-                >
-                  Book
-                </button>
-              </div>
             </div>
           </div>
         </div>

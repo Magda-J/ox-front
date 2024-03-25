@@ -33,19 +33,17 @@ export class FormComponent implements OnInit {
   }
 
   event: EventData = {
-    eventName: '',
-    eventImg: '',
-    price: 0,
-    tags: [],
-    description: '',
-    dates: [
-      {
-        date: [],
-        starttime: [],
-        endtime: [],
-        spaces: [],
-      },
-    ],
+
+      eventName: '',
+      eventImg: '',    
+      price: 0,
+      tags: [],
+      description: '',
+      date: '',
+      starttime: '',
+      endtime: '',
+      spaces: 0
+
   };
 
   constructor(private http: HttpClient, private router: Router) {}
@@ -55,48 +53,42 @@ export class FormComponent implements OnInit {
     const apiUrl = 'http://localhost:3000/events/postevent';
 
     // HTTP POST request
-    this.http.post(apiUrl, this.event).subscribe({
-      next: (response: any) => {
-        console.log('Post successful', response);
+    this.http.post(apiUrl, this.event)
+      .subscribe({
+        next: (response: any) => {
+          console.log('Post successful', response);
+          
+          this.event = {
+            eventName: '',
+            eventImg: '',    
+            price: 0,
+            tags: [],
+            description: '',
+            date: '',
+            starttime: '',
+            endtime: '',
+            spaces: 0
+          };
+        },
+        error: (error: any) => {
+          console.error('Error occurred', error);
+         
+        }
+      });
 
-        this.event = {
-          eventName: '',
-          eventImg: '',
-          price: 0,
-          tags: [],
-          description: '',
-          dates: [
-            {
-              date: [],
-              starttime: [],
-              endtime: [],
-              spaces: [],
-            },
-          ],
-        };
-      
-        this.router.navigateByUrl('/profilepage')
-      
-      },
-      error: (error: any) => {
-        console.error('Error occurred', error);
-      },
-    });
   }
 }
 
 export interface EventData {
-  eventName: string;
-  eventImg: string;
-  price: number;
-  tags: string[];
-  description: string;
-  dates: [
-    {
-      date: Date[];
-      starttime: string[];
-      endtime: string[];
-      spaces: number[];
-    }
-  ];
-}
+
+  eventName: string,
+  eventImg: string,    
+  price: number,
+  tags: string[],
+  description: string
+  date: string,
+  starttime: string,
+  endtime: string,
+  spaces: number,
+  };
+
