@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+
 import { ActivatedRoute, RouterLink, RouterLinkActive } from '@angular/router';
+
 import { CommonModule } from '@angular/common';
 import { EventService } from '../services/event-add.service';
 import { Event } from '../cardprofile/cardprofile.component';
+
 
 @Component({
   selector: 'app-eventpage',
@@ -28,4 +31,7 @@ export class EventpageComponent implements OnInit {
         });
     }
   }
+
+
+
 }

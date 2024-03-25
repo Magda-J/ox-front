@@ -1,0 +1,633 @@
+
+
+<style>
+    .-z-1 {
+      z-index: -1;
+    }
+  
+    .origin-0 {
+      transform-origin: 0%;
+    }
+  
+    input:focus ~ label,
+    input:not(:placeholder-shown) ~ label,
+    textarea:focus ~ label,
+    textarea:not(:placeholder-shown) ~ label,
+    select:focus ~ label,
+    select:not([value=""]):valid ~ label {
+      /* @apply transform; scale-75; -translate-y-6; */
+      --tw-translate-x: 0;
+      --tw-translate-y: 0;
+      --tw-rotate: 0;
+      --tw-skew-x: 0;
+      --tw-skew-y: 0;
+      transform: translateX(var(--tw-translate-x))
+        translateY(var(--tw-translate-y)) rotate(var(--tw-rotate))
+        skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x))
+        scaleY(var(--tw-scale-y));
+      --tw-scale-x: 0.75;
+      --tw-scale-y: 0.75;
+      --tw-translate-y: -1.5rem;
+    }
+  
+    input:focus ~ label,
+    select:focus ~ label {
+      /* @apply text-black; left-0; */
+      --tw-text-opacity: 1;
+      color: rgba(0, 0, 0, var(--tw-text-opacity));
+      left: 0px;
+    }
+  
+    .time-input {
+      width: 80px; 
+    }
+  </style>
+  <app-navbar></app-navbar>
+  <div
+    class="flex flex-wrap bg-[#F4F3F1] justify-center items-center sm:flex-col-span-2"
+  >
+    <!-- Form code -->
+    <div
+      class="min-h-screen sm:w-1/3 bg-[#F4F3F1] p-0 sm:p-12 flex flex-col-1 justify-center items-center"
+    >
+      <div
+        class="mx-auto max-w-md px-6 py-12 bg-white border-0 shadow-lg sm:rounded-3xl"
+      >
+        <form action='' id="form" novalidate (submit)="onSubmit()">
+          <div class="relative z-0 w-full mb-5">
+            <input
+              type="text"
+              name="name"
+              placeholder=" "
+              maxlength="100"
+              required
+              class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
+             [(ngModel)] = "eventUser.eventName"
+              />
+            <label
+              for="name"
+              class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500"
+              >Event name (max 100 characters)</label
+            >
+          </div>
+  
+          <div class="relative z-0 w-full mb-5">
+            <input
+              type="url"
+              name="url"
+              placeholder=" "
+              class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
+              [(ngModel)] = "eventUser.eventImg"
+              />
+            <label
+              for="url"
+              class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500"
+              >Event image URL</label
+            >
+          </div>
+  
+          <!--  checkbox -->
+          <p class="pb-2 pt-2">Event Categories</p>
+          <div class="">
+            <app-dropdown [event]="eventUser"></app-dropdown>
+          </div>
+  
+          <!--  checkbox -->
+  
+          <!-- Date and time -->
+          <p class="pb-2 pt-2">Event Date No.1</p>
+          <div class="flex flex-row space-x-4">
+            <div class="relative z-0 w-full mb-5">
+              <input
+                type="text"
+                name="date"
+                placeholder=" "
+                onclick="this.setAttribute('type', 'date');"
+                class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
+                [(ngModel)] = "eventUser.dates[0].date[0]"
+                />
+              <label
+                for="date"
+                class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500"
+                >Date</label
+              >
+              <span class="text-sm text-red-600 hidden" id="error"
+                >Date is required</span
+              >
+            </div>
+            <div class="relative z-0 w-full">
+              <input
+                type="text"
+                name="time"
+                placeholder=" "
+                onclick="this.setAttribute('type', 'time');"
+                class="time-input pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
+                [(ngModel)] = "eventUser.dates[0].starttime[0]"
+                />
+              <label
+                for="time"
+                class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500"
+                > Start Time</label>
+              
+            </div>
+            <div class="relative z-0 w-full">
+              <input
+                type="text"
+                name="time"
+                placeholder=" "
+                onclick="this.setAttribute('type', 'time');"
+                class="time-input pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
+                [(ngModel)] = "eventUser.dates[0].endtime[0]"
+                />
+              <label
+                for="time"
+                class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500"
+                > End Time</label>
+              
+            </div>
+          </div>
+  
+          <div class="relative z-0 w-full mb-5">
+            <select
+              name="select"
+              value=""
+              onclick="this.setAttribute('value', this.value);"
+              class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none z-1 focus:outline-none focus:ring-0 focus:border-black border-gray-200"
+              [(ngModel)] = "eventUser.dates[0].spaces[0]"
+              >
+              <option value="" selected disabled hidden></option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+            </select>
+            <label
+              for="select"
+              class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500"
+              >Select a number of available spaces
+            </label>
+            <span class="text-sm text-red-600 hidden" id="error"
+              >Option has to be selected</span
+            >
+          </div>
+  
+          <!-- Event No.2 -->
+          <button
+            id="toggleButton"
+            type="button"
+            class="w-full px-4 py-2 mb-4 bg-orange-500 text-white rounded-md hover:bg-orange-600"
+            (click)="toggleEvents()"
+          >
+            Add More Dates
+          </button>
+  
+          <!-- Event No.2 and Event No.3 sections -->
+          <div *ngIf="showEvents">
+            <p class="pb-2 pt-2">Event Date No.2</p>
+  
+            <div class="flex flex-row space-x-4">
+              <div class="relative z-0 w-full mb-5">
+                <input
+                  type="text"
+                  name="date"
+                  placeholder=" "
+                  onclick="this.setAttribute('type', 'date');"
+                  class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
+                [(ngModel)] = "eventUser.dates[0].date[1]"
+                />
+                <label
+                  for="date"
+                  class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500"
+                  >Date</label
+                >
+                <span class="text-sm text-red-600 hidden" id="error"
+                  >Date is required</span
+                >
+              </div>
+              <div class="relative z-0 w-full">
+                <input
+                  type="text"
+                  name="time"
+                  placeholder=" "
+                  onclick="this.setAttribute('type', 'time');"
+                  class="time-input pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
+                  [(ngModel)] = "eventUser.dates[0].starttime[1]"
+                  />
+                <label
+                  for="time"
+                  class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500"
+                  >Time</label
+                >
+              </div>
+              <div class="relative z-0 w-full">
+                <input
+                  type="text"
+                  name="time"
+                  placeholder=" "
+                  onclick="this.setAttribute('type', 'time');"
+                  class="time-input pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
+                  [(ngModel)] = "eventUser.dates[0].endtime[1]"
+                  />
+                <label
+                  for="time"
+                  class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500"
+                  > End Time</label>
+                
+              </div>
+            </div>
+            <div class="relative z-0 w-full mb-5">
+              <select
+                name="select"
+                value=""
+                onclick="this.setAttribute('value', this.value);"
+                class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none z-1 focus:outline-none focus:ring-0 focus:border-black border-gray-200"
+                [(ngModel)] = "eventUser.dates[0].spaces[1]"
+              >
+                <option value="" selected disabled hidden></option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+              </select>
+              <label
+                for="select"
+                class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500"
+                >Select a number of available spaces
+              </label>
+            </div>
+          </div>
+  
+          <!-- Event No.3 -->
+  
+          <div *ngIf="showEvents">
+            <p class="pb-2 pt-2">Event Date No.3</p>
+            <div class="flex flex-row space-x-4">
+              <div class="relative z-0 w-full mb-5">
+                <input
+                  type="text"
+                  name="date"
+                  placeholder=" "
+                  onclick="this.setAttribute('type', 'date');"
+                  class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
+                  [(ngModel)] = "eventUser.dates[0].date[2]"
+                  />
+                <label
+                  for="date"
+                  class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500"
+                  >Date</label
+                >
+                <span class="text-sm text-red-600 hidden" id="error"
+                  >Date is required</span
+                >
+              </div>
+              <div class="relative z-0 w-full">
+                <input
+                  type="text"
+                  name="time"
+                  placeholder=" "
+                  onclick="this.setAttribute('type', 'time');"
+                  class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
+                  [(ngModel)] = "eventUser.dates[0].starttime[2]"
+                  />
+                <label
+                  for="time"
+                  class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500"
+                  >Time</label
+                >
+              </div>
+              <div class="relative z-0 w-full">
+                <input
+                  type="text"
+                  name="time"
+                  placeholder=" "
+                  onclick="this.setAttribute('type', 'time');"
+                  class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
+                  [(ngModel)] = "eventUser.dates[0].endtime[2]"
+                  />
+                <label
+                  for="time"
+                  class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500"
+                  > End Time</label>
+                
+              </div>
+            </div>
+            <div class="relative z-0 w-full mb-5">
+              <select
+                name="select"
+                value=""
+                onclick="this.setAttribute('value', this.value);"
+                class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none z-1 focus:outline-none focus:ring-0 focus:border-black border-gray-200"
+                [(ngModel)] = "eventUser.dates[0].spaces[2]"
+                >
+                <option value="" selected disabled hidden></option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+              </select>
+              <label
+                for="select"
+                class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500"
+                >Select a number of available spaces</label
+              >
+            </div>
+          </div>
+          <div class="relative z-0 w-full mb-5">
+            <input
+              type="number"
+              name="money"
+              placeholder=" "
+              class="pt-3 pb-2 pl-5 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
+              [(ngModel)] = "eventUser.price"
+              />
+            <div class="absolute top-0 left-0 mt-3 ml-1 text-gray-400">£</div>
+            <label
+              for="money"
+              class="absolute duration-300 top-3 left-5 -z-1 origin-0 text-gray-500"
+              >Amount</label
+            >
+          </div>
+  
+          <div class="relative z-0 w-full mb-5">
+            <textarea
+              type="text"
+              name="duration"
+              placeholder=" "
+              maxlength="500"
+              class="resize pt-3 pb-2 pr-12 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
+              [(ngModel)] = "eventUser.description"
+              ></textarea>
+  
+            <label
+              for="duration"
+              class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500"
+              >Description (max 500 characters)</label
+            >
+          </div>
+  
+          <button
+            id="submit"
+            type="submit"
+            class="w-full px-6 py-3 mt-3 text-lg text-white transition-all duration-150 ease-linear rounded-lg shadow outline-none bg-orange-500 hover:bg-orange-600 hover:shadow-lg focus:outline-none"
+          >
+            Submit
+          </button>
+        </form>
+      </div>
+    </div>
+  
+    <!-- Endo of the form code -->
+  
+    <!-- Event prev code -->
+    <!-- Background image -->
+    <div class="flex flex-col-1 sm:w-2/3">
+      <div
+        class="container bg-white sm:mr-10 border-4 border-gray-200 rounded-xl"
+      >
+        <div class="relative sm:h-[350px]">
+          <div class="absolute inset-0">
+            <img
+            *ngIf="eventUser.eventImg"
+            [src]="eventUser.eventImg"
+              
+              class="object-cover w-full h-full rounded-xl"
+              alt="Backround Image"
+            />
+            <div class="absolute inset-0 bg-black opacity-60 rounded-xl"></div>
+          </div>
+          <div class="relative">
+            <div
+              class="relative px-4 py-16 mx-auto overflow-hidden md:px-24 lg:px-8 lg:py-20"
+            >
+              <div class="items-center justify-between xl:flex-row">
+                <div class="w-full mb-12 xl:mb-0 xl:pr-16 xl:w-7/12">
+                  <h2
+                    class="hover:text-orange-700 mb-6 font-sans text-3xl font-bold tracking-tight text-white sm:text-4xl sm:leading-none"
+                  >
+                    {{eventUser.eventName | json}}
+                  </h2>
+                  <img />
+  
+                  <div class="flex items-center gap-4">
+                    <img
+                      class="w-10 h-10 rounded-full"
+                      src="https://images.pexels.com/photos/1820559/pexels-photo-1820559.jpeg?auto=compress&cs=tinysrgb&w=600"
+                      alt=""
+                    />
+                    <div class="font-medium text-white hover:text-orange-700">
+                      <div>{{username}}</div>
+                    </div>
+                  </div>
+  
+                  <!-- Star rating start -->
+  
+                  <div class="flex items-center text-3xl text-yellow-400 ml-2">
+                    <ng-container *ngFor="let star of [1, 2, 3, 4, 5]">
+                      <ng-container *ngIf="rating !== null && star <= rating; else emptyStar">&#9733;</ng-container>
+                    </ng-container>
+                    <ng-template #emptyStar>&#9734;</ng-template>
+                  </div>
+        
+  
+                  <!-- Star rating end -->
+  
+                  <p
+                    class="font-bold text-xl mt-8 text-white hover:text-orange-700"
+                  >
+                    £{{eventUser.price | json}}/person
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <!-- Background image -->
+  
+        <!-- Event description -->
+  
+        <p class="px-4 text-justify text-sm sm:text-md leading-loose">
+           {{eventUser.description | json}}
+        </p>
+  
+        <!-- Host information -->
+  
+        <div
+          class="flex flex-wrap gap-2 justify-center items-center sm:flex-col-span-2"
+        >
+          <!-- <h1
+      class="mt-4 text-3xl font-semibold text-center bg-gradient-to-r from-orange-900 via-orange-500 to-orange-400 inline-block text-transparent bg-clip-text lg:text-4xl"
+    >
+      Your Host
+    </h1>
+    <div class="w-full sm:w-1/3 flex flex-col-1 justify-center items-center">
+      <div
+        class="px-6 hover:bg-orange-200 bg-gray-200 rounded-lg shadow-xl py-6 flex justify-center items-center"
+      >
+        <div
+          class="flex flex-col md:flex-row w-3/4 md:w-5/6 space-x-0 md:space-x-8"
+        >
+          <div class="w-full md:w-2/5 flex flex-col items-center justify-center">
+            <figure class="w-1/2 md:w-full rounded-full overflow-hidden">
+              <img
+                src="https://images.pexels.com/photos/1820559/pexels-photo-1820559.jpeg?auto=compress&cs=tinysrgb&w=600"
+                alt="profile image"
+              />
+            </figure>
+          </div>
+          <div
+            class="w-full md:w-3/5 space-y-4 flex flex-col justify-center items-center"
+          >
+            <div class="flex flex-col justify-center">
+              <h2
+                class="text-center md:text-left text-2xl font-bold text-gray-900"
+              >
+                Justine Howell
+              </h2>
+              <p
+                class="inline text-gray-700 font-normal leading-6 w-full text-base text-justify"
+              >
+                your cooking prowess. From mastering classic dishes to
+                experimenting with innovative flavors, these classes offer a
+                dynamic platform to expand your culinary repertoire and discover
+                the joy of homemade
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> -->
+          <!-- Booking options -->
+  
+          <div class="flex flex-col-1 sm:w-1/2 bg-white dark:bg-gray-900">
+            <div class="container px-2 py-4">
+              <h1
+                class=" text-2xl font-semibold text-center text-gray-800 capitalize lg:text-4xl"
+              >
+                Available Dates
+              </h1>
+  
+              <div class="mt-4 space-y-4 xl:mt-4">
+                <div
+                  class="flex items-center justify-between max-w-2xl sm:px-4 py-4 mx-auto border cursor-pointer rounded-xl dark:border-gray-700"
+                >
+                  <div class="flex items-center">
+                    <div class="flex flex-col items-center mx-5 space-y-1">
+                      <h2
+                        class="text-lg font-medium text-gray-700 sm:text-2xl dark:text-gray-200"
+                      >
+                      {{eventUser.dates[0].date[0] | json}}
+                      </h2>
+                      <div
+                        class="px-2 text-xs text-orange-500 bg-gray-100 rounded-full sm:px-4 sm:py-1 dark:bg-gray-700"
+                      >
+                      {{eventUser.dates[0].starttime[0] | json}} - {{eventUser.dates[0].endtime[0] | json}} (GMT)
+                      </div>
+                    </div>
+                  </div>
+  
+                  <h2
+                    class="text-md font-semibold text-gray-500 sm:text-3xl dark:text-gray-300"
+                  >
+                    9
+                    <span class="text-md sm:text-base font-medium"
+                      >/ {{eventUser.dates[0].spaces[0] | json}} spots remaining</span
+                    >
+                  </h2>
+                  <button
+                    class="ml-2 px-8 py-2 mr-2 tracking-wide text-white capitalize transition-colors duration-200 transform bg-orange-600 rounded-md hover:bg-orange-300 focus:outline-none focus:bg-orange-400 focus:ring focus:ring-blue-300 focus:ring-opacity-80"
+                  >
+                    Book
+                  </button>
+                </div>
+                <div
+                  class="flex items-center justify-between max-w-2xl sm:px-4 py-4 mx-auto border cursor-pointer rounded-xl dark:border-gray-700"
+                >
+                  <div class="flex items-center">
+                    <div class="flex flex-col items-center mx-5 space-y-1">
+                      <h2
+                        class="text-lg font-medium text-gray-700 sm:text-2xl dark:text-gray-200"
+                      >
+                      {{eventUser.dates[0].date[1] | json}}
+                      </h2>
+                      <div
+                        class="px-2 text-xs text-orange-500 bg-gray-100 rounded-full sm:px-4 sm:py-1 dark:bg-gray-700"
+                      >
+                      {{eventUser.dates[0].starttime[1] | json}} - {{eventUser.dates[0].endtime[1] | json}} (GMT)
+                      </div>
+                    </div>
+                  </div>
+  
+                  <h2
+                    class="text-md font-semibold text-gray-500 sm:text-3xl dark:text-gray-300"
+                  >
+                    10
+                    <span class="text-md sm:text-base font-medium"
+                      >/{{eventUser.dates[0].spaces[1] | json}} spots remaining</span
+                    >
+                  </h2>
+                  <button
+                    class="ml-2 px-8 py-2 mr-2 tracking-wide text-white capitalize transition-colors duration-200 transform bg-orange-600 rounded-md hover:bg-orange-300 focus:outline-none focus:bg-orange-400 focus:ring focus:ring-blue-300 focus:ring-opacity-80"
+                  >
+                    Book
+                  </button>
+                </div>
+                <div
+                  class="flex items-center justify-between max-w-2xl sm:px-4 py-4 mx-auto border cursor-pointer rounded-xl dark:border-gray-700"
+                >
+                  <div class="flex items-center">
+                    <div class="flex flex-col items-center mx-5 space-y-1">
+                      <h2
+                        class="text-lg font-medium text-gray-700 sm:text-2xl dark:text-gray-200"
+                      >
+                      {{eventUser.dates[0].date[2] | json}}
+                      </h2>
+                      <div
+                        class="px-2 text-xs text-orange-500 bg-gray-100 rounded-full sm:px-4 sm:py-1 dark:bg-gray-700"
+                      >
+                      {{eventUser.dates[0].starttime[2] | json}} - {{eventUser.dates[0].endtime[2] | json}} (GMT)
+                      </div>
+                    </div>
+                  </div>
+  
+                  <h2
+                    class="text-md font-semibold text-gray-500 sm:text-3xl dark:text-gray-300"
+                  >
+                    6
+                    <span class="text-md sm:text-base font-medium"
+                      >/{{eventUser.dates[0].spaces[2] | json}} spots remaining</span
+                    >
+                  </h2>
+                  <button
+                    class="ml-2 px-8 py-2 mr-2 tracking-wide text-white capitalize transition-colors duration-200 transform bg-orange-600 rounded-md hover:bg-orange-300 focus:outline-none focus:bg-orange-400 focus:ring focus:ring-blue-300 focus:ring-opacity-80"
+                  >
+                    Book
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End of event prev code -->
+  
