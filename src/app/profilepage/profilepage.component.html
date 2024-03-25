@@ -1,5 +1,6 @@
 <!-- Background image -->
 <div class="bg-[#F4F3F1]">
+  <app-navbar></app-navbar>
   <div class="sm:h-[370px] flex flex-row">
     <div
       class=" shadow-xl border-orange-200 border-2 rounded-lg mt-4 mx-4 flex flex-row"
@@ -38,7 +39,8 @@
           <div class="mx-auto my-auto md:h-[100px] md:w-[100px] lg:h-[250px] lg:w-[250px] rounded-full overflow-hidden flex items-center">
             
               <img
-                src="https://images.pexels.com/photos/1820559/pexels-photo-1820559.jpeg?auto=compress&cs=tinysrgb&w=600"
+              [src]="profilePic"
+                
                 alt="profile image"
               />
             </div>
@@ -48,14 +50,18 @@
               name="url"
               placeholder="Paste profile image URL"
               class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
-             
+              [(ngModel)] = "user.profilePic"
               />
-           
-            <button
+           <div (click)="onSubmit()">
+            <button 
+              id="submit"
+              type="submit"
               class="ml-2 px-8 py-2 mr-2 tracking-wide text-white capitalize transition-colors duration-200 transform bg-orange-600 rounded-md hover:bg-orange-300 focus:outline-none focus:bg-orange-400 focus:ring focus:ring-blue-300 focus:ring-opacity-80"
             >
               Upload
-            </button></div></div>
+            </button>
+          </div>
+          </div></div>
           </div>
           <div
             class="flex flex-wrap md:flex-col-1 md:w-[35%] lg:w-[44%]  gap-4 border border-orange-200 rounded-md p-2 mb-4 sm:mb-0"
@@ -64,11 +70,7 @@
             <p
               class="inline text-gray-700 font-normal leading-6 w-full text-base text-justify sm:my-auto"
             >
-              From mastering classic dishes to experimenting with innovative
-              flavors, these classes offer a dynamic platform to expand your
-              culinary repertoire and discover the joy.     From mastering classic dishes to experimenting with innovative
-              flavors, these classes offer a dynamic platform to expand your
-              culinary repertoire and discover the joy.    
+              {{ bio }}    
               
             </p>
             <app-bioedit></app-bioedit>

@@ -32,6 +32,9 @@ logout(): void {
   localStorage.setItem('token', '')
   localStorage.setItem('username', '')
   localStorage.setItem('rating', '')
+  localStorage.setItem('bio', '')
+  localStorage.setItem('profilePic', '')
+
 }
 
 constructor(@Inject(DOCUMENT) private document: Document) { }

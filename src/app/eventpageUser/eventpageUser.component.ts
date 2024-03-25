@@ -24,17 +24,17 @@ export class EventpageUserComponent implements OnInit {
       this.eventService.getEvent(eventId)
         .subscribe(event => {
           this.event = event;
-          console.log(this.event)
+         
         });
     }
   }
 
   onDelete() {
-    console.log(this.event);
+    
     const eventid = this.route.snapshot.params['id'];
     const apiUrl = `http://localhost:3000/events/${eventid}`;
 
-    console.log("Checking on submit event id", eventid)
+   
 
     // HTTP PUT request
     this.http.delete(apiUrl).subscribe({

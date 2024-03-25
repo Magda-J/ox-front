@@ -34,8 +34,6 @@ export class RegisterPageComponent {
     this.http.post(apiUrl, this.user).subscribe({
       next: (response: any) => {
         console.log('Post successful', response);
-        // this.authService.currentUserSig.set(response.token)
-        // this.authService.setCurrentUser(response.token);
         console.log("user signal", response)
         this.router.navigateByUrl('/login')
 

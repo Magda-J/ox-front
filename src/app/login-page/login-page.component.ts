@@ -40,7 +40,8 @@ export class LoginPageComponent {
         localStorage.setItem('token', response.token)
         localStorage.setItem('username', response.username)
         localStorage.setItem('rating', response.rating)
-        
+        localStorage.setItem('bio', response.bio)
+        localStorage.setItem('profilePic', response.profilePic)
         
         const userData: UserData = {
           username: response.username,

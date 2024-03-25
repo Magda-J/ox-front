@@ -13,7 +13,13 @@ export interface ParticipantInterface {
   export interface UserData {
     username: string;
     password: string;
-    // token: string;
+    
+  }
+
+
+  export interface UserProfileData {
+    bio: string;
+    profilePic: string;
   }
 
 // import { HttpContext, HttpHeaders, HttpParams } from '@angular/common/http';
