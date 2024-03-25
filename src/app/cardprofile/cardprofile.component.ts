@@ -15,11 +15,13 @@ import { EventService } from '../services/event-add.service';
 export class CardprofileComponent implements OnInit {
  
   events: Event[] = [];
+  username: string | null = null;
 
   constructor(private eventService: EventService) {}
 
   ngOnInit(): void {
     this.getEvents();
+    this.username = localStorage.getItem('username');
   }
 
   getEvents() {
@@ -28,6 +30,13 @@ export class CardprofileComponent implements OnInit {
         this.events = events;
       });
   }
+
+
+  
+  
+    
+  
+
   
 }
 
@@ -38,5 +47,9 @@ export interface Event {
   ratings: number;
   price: number;
   description: string;
+  date: string;
+  starttime: string;
+  endtime: string;
+  spaces: number;
  
 }

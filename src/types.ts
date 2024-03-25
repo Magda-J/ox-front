@@ -10,6 +10,18 @@ export interface ParticipantInterface {
     postcode: string
   }
 
+  export interface UserData {
+    username: string;
+    password: string;
+    
+  }
+
+
+  export interface UserProfileData {
+    bio: string;
+    profilePic: string;
+  }
+
 // import { HttpContext, HttpHeaders, HttpParams } from '@angular/common/http';
 
 // export interface Options {

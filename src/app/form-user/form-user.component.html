@@ -62,7 +62,7 @@
             maxlength="100"
             required
             class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
-           [(ngModel)] = "event.eventName"
+           [(ngModel)] = "eventUser.eventName"
             />
           <label
             for="name"
@@ -77,7 +77,7 @@
             name="url"
             placeholder=" "
             class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
-            [(ngModel)] = "event.eventImg"
+            [(ngModel)] = "eventUser.eventImg"
             />
           <label
             for="url"
@@ -89,7 +89,7 @@
         <!--  checkbox -->
         <p class="pb-2 pt-2">Event Categories</p>
         <div class="">
-          <app-dropdown [event]="event"></app-dropdown>
+          <app-dropdown [event]="eventUser"></app-dropdown>
         </div>
 
         <!--  checkbox -->
@@ -104,7 +104,7 @@
               placeholder=" "
               onclick="this.setAttribute('type', 'date');"
               class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
-              [(ngModel)] = "event.date"
+              [(ngModel)] = "eventUser.date"
               />
             <label
               for="date"
@@ -122,7 +122,7 @@
               placeholder=" "
               onclick="this.setAttribute('type', 'time');"
               class="time-input pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
-              [(ngModel)] = "event.starttime"
+              [(ngModel)] = "eventUser.starttime"
               />
             <label
               for="time"
@@ -137,7 +137,7 @@
               placeholder=" "
               onclick="this.setAttribute('type', 'time');"
               class="time-input pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
-              [(ngModel)] = "event.endtime"
+              [(ngModel)] = "eventUser.endtime"
               />
             <label
               for="time"
@@ -153,7 +153,7 @@
             value=""
             onclick="this.setAttribute('value', this.value);"
             class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none z-1 focus:outline-none focus:ring-0 focus:border-black border-gray-200"
-            [(ngModel)] = "event.spaces"
+            [(ngModel)] = "eventUser.spaces"
             >
             <option value="" selected disabled hidden></option>
             <option value="1">1</option>
@@ -183,7 +183,7 @@
             name="money"
             placeholder=" "
             class="pt-3 pb-2 pl-5 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
-            [(ngModel)] = "event.price"
+            [(ngModel)] = "eventUser.price"
             />
           <div class="absolute top-0 left-0 mt-3 ml-1 text-gray-400">£</div>
           <label
@@ -200,7 +200,7 @@
             placeholder=" "
             maxlength="500"
             class="resize pt-3 pb-2 pr-12 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
-            [(ngModel)] = "event.description"
+            [(ngModel)] = "eventUser.description"
             ></textarea>
 
           <label
@@ -232,8 +232,8 @@
       <div class="relative sm:h-[350px]">
         <div class="absolute inset-0">
           <img
-          *ngIf="event.eventImg"
-          [src]="event.eventImg"
+          *ngIf="eventUser.eventImg"
+          [src]="eventUser.eventImg"
             
             class="object-cover w-full h-full rounded-xl"
             alt="Backround Image"
@@ -249,7 +249,7 @@
                 <h2
                   class="hover:text-orange-700 mb-6 font-sans text-3xl font-bold tracking-tight text-white sm:text-4xl sm:leading-none"
                 >
-                  {{event.eventName | json}}
+                  {{eventUser.eventName | json}}
                 </h2>
                 <img />
 
@@ -279,7 +279,7 @@
                 <p
                   class="font-bold text-xl mt-8 text-white hover:text-orange-700"
                 >
-                  £{{event.price | json}}/person
+                  £{{eventUser.price | json}}/person
                 </p>
               </div>
             </div>
@@ -292,7 +292,7 @@
       <!-- Event description -->
 
       <p class="px-4 text-justify text-sm sm:text-md leading-loose">
-         {{event.description | json}}
+         {{eventUser.description | json}}
       </p>
 
       <!-- Host information -->
@@ -361,12 +361,12 @@
                     <h2
                       class="text-lg font-medium text-gray-700 sm:text-2xl dark:text-gray-200"
                     >
-                    {{event.date | json}}
+                    {{eventUser.date | json}}
                     </h2>
                     <div
                       class="px-2 text-xs text-orange-500 bg-gray-100 rounded-full sm:px-4 sm:py-1 dark:bg-gray-700"
                     >
-                    {{event.starttime | json}} - {{event.endtime | json}} (GMT)
+                    {{eventUser.starttime | json}} - {{eventUser.endtime | json}} (GMT)
                     </div>
                   </div>
                 </div>
@@ -376,7 +376,7 @@
                 >
                   9
                   <span class="text-md sm:text-base font-medium"
-                    >/ {{event.spaces | json}} spots remaining</span
+                    >/ {{eventUser.spaces | json}} spots remaining</span
                   >
                 </h2>
                 <button
