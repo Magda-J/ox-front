@@ -2,6 +2,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { EventpageComponent } from './eventpage/eventpage.component';
 import { FormComponent } from './form/form.component';
 import { ProfilepageComponent } from './profilepage/profilepage.component';
+import { HomepageComponent } from './homepage/homepage.component';
 
 export const routes: Routes = [
   {
@@ -25,5 +26,10 @@ export const routes: Routes = [
     path: 'profilepage',
     title: 'Profile Page',
     component: ProfilepageComponent,
+  },
+  {
+    path: '',
+    title: 'Homepage',
+    component: HomepageComponent,
   },
 ];
