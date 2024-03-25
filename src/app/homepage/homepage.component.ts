@@ -14,7 +14,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 })
 
 export class HomepageComponent {
-  selectedCategory: string = 'Creative Arts';
+  selectedCategory: string = 'All';
 
   onCategorySelected(category: string): void {
     this.selectedCategory = category;
