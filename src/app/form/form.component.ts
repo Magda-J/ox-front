@@ -69,7 +69,9 @@ export class FormComponent implements OnInit {
             endtime: '',
             spaces: 0
           };
+          this.router.navigateByUrl('/profilepage')
         },
+        
         error: (error: any) => {
           console.error('Error occurred', error);
          

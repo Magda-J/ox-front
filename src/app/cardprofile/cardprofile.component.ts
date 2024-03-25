@@ -47,5 +47,9 @@ export interface Event {
   ratings: number;
   price: number;
   description: string;
+  date: string;
+  starttime: string;
+  endtime: string;
+  spaces: number;
  
 }
