@@ -5,10 +5,6 @@ import { ProfilepageComponent } from './profilepage/profilepage.component';
 import { HomepageComponent } from './homepage/homepage.component';
 
 export const routes: Routes = [
-    {
-        path: 'eventpage/:eventid/:dateindex', title: 'Event', 
-        loadComponent: () => import('./booking/booking.component').then((c)=>c.BookingComponent)
-        },
   {
     path: 'eventpage/:id',
     title: 'Event',
@@ -16,8 +12,10 @@ export const routes: Routes = [
       import('./eventpage/eventpage.component').then(
         (c) => c.EventpageComponent
       ),
-
-    // component: EventpageComponent,
+  },
+  {
+    path: 'eventpage/:eventid/booking', title: 'Event', 
+    loadComponent: () => import('./booking/booking.component').then((c)=>c.BookingComponent)
   },
   {
     path: 'form',
