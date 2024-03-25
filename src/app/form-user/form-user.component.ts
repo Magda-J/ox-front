@@ -36,18 +36,14 @@ export class FormUserComponent implements OnInit {
 
   eventUser: EventDataUser = {
     eventName: '',
-    eventImg: '',
+    eventImg: '',    
     price: 0,
     tags: [],
     description: '',
-    dates: [
-      {
-        date: [],
-        starttime: [],
-        endtime: [],
-        spaces: [],
-      },
-    ],
+    date: '',
+    starttime: '',
+    endtime: '',
+    spaces: 0
   };
 
   constructor(private http: HttpClient, private route: ActivatedRoute, private router: Router) {}
@@ -89,18 +85,14 @@ fetchUserEvent(): void {
 
         this.eventUser = {
           eventName: '',
-          eventImg: '',
+          eventImg: '',    
           price: 0,
           tags: [],
           description: '',
-          dates: [
-            {
-              date: [],
-              starttime: [],
-              endtime: [],
-              spaces: [],
-            },
-          ],
+          date: '',
+          starttime: '',
+          endtime: '',
+          spaces: 0
         };
         this.router.navigateByUrl('/profilepage')
       
@@ -115,18 +107,14 @@ fetchUserEvent(): void {
 }
 
 export interface EventDataUser {
-  eventName: string;
-  eventImg: string;
-  price: number;
-  tags: string[];
-  description: string;
-  dates: [
-    {
-      date: Date[];
-      starttime: string[];
-      endtime: string[];
-      spaces: number[];
-    }
-  ];
+  eventName: string,
+  eventImg: string,    
+  price: number,
+  tags: string[],
+  description: string
+  date: string,
+  starttime: string,
+  endtime: string,
+  spaces: number,
 }
 
