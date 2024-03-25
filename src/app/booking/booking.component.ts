@@ -15,7 +15,7 @@ import { CommonModule } from '@angular/common';
 })
 export class BookingComponent {
 
-  eventData: any;
+  eventData: any = {}
   eventid: string = ''
   dateindex: string = ''
 
@@ -27,11 +27,11 @@ export class BookingComponent {
 
   fetchEvent(): void {
     const eventid = this.route.snapshot.params['eventid'];
-    const dateindex = this.route.snapshot.params['dateindex']
+    // const dateindex = this.route.snapshot.params['dateindex']
     const apiUrl = `http://localhost:3000/events/${eventid}`
 
     this.eventid = eventid
-    this.dateindex = dateindex
+    // this.dateindex = dateindex
 
     this.http.get(apiUrl)
       .subscribe({
@@ -73,7 +73,7 @@ export class BookingComponent {
     transactionInfo: {
       totalPriceStatus: 'FINAL',
       totalPriceLabel: 'Total',
-      totalPrice: '100.00', // DYNAMIC
+      totalPrice: '0.00',
       currencyCode: 'GBP',
       countryCode: 'UK'
     }
@@ -99,7 +99,6 @@ export class BookingComponent {
 
     console.log(this.formData);
     const eventid = this.route.snapshot.params['eventid']
-
     
     const apiUrl = `http://localhost:3000/events/${eventid}/booking`;
 
