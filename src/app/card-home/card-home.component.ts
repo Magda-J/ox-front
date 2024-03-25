@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import { HomepageEventsService } from '../services/homepage-events.service';
 
 
 @Component({
@@ -16,26 +17,36 @@ export class CardHomeComponent implements OnInit {
   @Input() selectedCategory: string = 'All';
   events: EventData[] = [];  
   filteredEvents: EventData[] = [];
+  
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private eventService: HomepageEventsService) {}
 
   ngOnInit(): void {
-    this.fetchEventData();
+    this.getHomeEvents();
   }
 
-  fetchEventData(): void {
-    this.http.get<EventData[]>('http://localhost:3000/events')
-      .subscribe({
-        next: (data) => {
-          this.events = data;
-          this.filterEvents();
-          console.log('Events data:', this.events);
-        },
-        error: (error) => {
-          console.error('Error fetching events:', error);
-        }
+  // fetchEventData(): void {
+  //   this.http.get<EventData[]>('http://localhost:3000/events')
+  //     .subscribe({
+  //       next: (data) => {
+  //         this.events = data;
+  //         this.filterEvents();
+  //         console.log('Events data:', this.events);
+  //       },
+  //       error: (error) => {
+  //         console.error('Error fetching events:', error);
+  //       }
+  //     });
+  // }
+
+  getHomeEvents() {
+    this.eventService.getHomeEvents()
+      .subscribe(events => {
+        this.events = events;
+        console.log("Home events", this.events)
       });
   }
+
   
   filterEvents(): void {
     if (this.selectedCategory === 'All') {
@@ -60,10 +71,9 @@ export interface EventData {
   tags: string[];
   description: string;
   ratings: number;
-  dates: {
-    date: Date,
-    starttime: string,
-    endtime: string,
-    spaces: number
-  }[];
+  date: string,
+  starttime: string,
+  endtime: string,
+  spaces: number
+ 
 }

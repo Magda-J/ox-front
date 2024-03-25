@@ -1,6 +1,6 @@
 <div class="absolute w-full flex justify-center">
 <div class="flex flex-col flex-wrap h-[20000px] md:h-[13000px] xl:h-[8000px] mt-[220px] md:mt-[250px] lg:mt-[205px] xl:mt-[180px]">
-  <div class="card" *ngFor="let event of filteredEvents">
+  <div class="card" *ngFor="let event of events">
     <a class="nav-link" [routerLink]="['/eventpage', event._id]" routerLinkActive="active">
       <div class="card-content border-2 border-orange-500 hover:border-orange-300 rounded overflow-hidden relative max-h-[500px] w-[50vw] md:w-64 lg:w-96 m-2">
         <img [src]="event.eventImg" alt="{{ event.eventName }}" class="card-image object-cover" />
