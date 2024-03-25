@@ -5,7 +5,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { NavbarComponent } from '../navbar/navbar.component';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 @Component({
@@ -25,7 +25,7 @@ export class FormUserComponent implements OnInit {
     this.username = localStorage.getItem('username');
     const ratingString = localStorage.getItem('rating');
     this.rating = ratingString ? parseFloat(ratingString) : null;
-   
+    this.fetchUserEvent()
 
 
 
@@ -50,7 +50,32 @@ export class FormUserComponent implements OnInit {
     ],
   };
 
-  constructor(private http: HttpClient, private route: ActivatedRoute) {}
+  constructor(private http: HttpClient, private route: ActivatedRoute, private router: Router) {}
+
+// get single event 
+
+fetchUserEvent(): void {
+    const eventid = this.route.snapshot.params['id'];
+    const apiUrl = `http://localhost:3000/events/${eventid}`
+
+    this.http.get(apiUrl)
+      .subscribe({
+        next: (response: any) => {
+          console.log('GET request successful', response);
+          this.eventUser = response;
+          // this.totalPrice = response.price.toString();
+        },
+        error: (error: any) => {
+          console.error('Error occurred during GET request', error);
+        }
+      });
+  }
+
+
+
+
+
+
 
   onSubmit() {
     console.log(this.eventUser);
@@ -77,7 +102,11 @@ export class FormUserComponent implements OnInit {
             },
           ],
         };
+        this.router.navigateByUrl('/profilepage')
+      
       },
+
+      
       error: (error: any) => {
         console.error('Error occurred', error);
       },

@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { EventService } from '../services/event-add.service';
 import { Event } from '../cardprofile/cardprofile.component';
+import { HttpClient } from '@angular/common/http';
 
 
 @Component({
@@ -15,7 +16,7 @@ import { Event } from '../cardprofile/cardprofile.component';
 export class EventpageUserComponent implements OnInit {
   event: Event | undefined;
 
-  constructor(private route: ActivatedRoute, private eventService: EventService) {}
+  constructor(private route: ActivatedRoute, private eventService: EventService, private http: HttpClient, private router: Router) {}
 
   ngOnInit(): void {
     const eventId = this.route.snapshot.paramMap.get('id');
@@ -26,6 +27,26 @@ export class EventpageUserComponent implements OnInit {
           console.log(this.event)
         });
     }
+  }
+
+  onDelete() {
+    console.log(this.event);
+    const eventid = this.route.snapshot.params['id'];
+    const apiUrl = `http://localhost:3000/events/${eventid}`;
+
+    console.log("Checking on submit event id", eventid)
+
+    // HTTP PUT request
+    this.http.delete(apiUrl).subscribe({
+      next: (response: any) => {
+        console.log('Delete successful', response);
+        this.router.navigateByUrl('/profilepage')
+
+      },
+      error: (error: any) => {
+        console.error('Error occurred', error);
+      },
+    });
   }
 
 

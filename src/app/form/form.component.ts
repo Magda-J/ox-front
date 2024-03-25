@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { NavbarComponent } from '../navbar/navbar.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-form',
@@ -47,7 +48,7 @@ export class FormComponent implements OnInit {
     ],
   };
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   onSubmit() {
     console.log(this.event);
@@ -73,6 +74,9 @@ export class FormComponent implements OnInit {
             },
           ],
         };
+      
+        this.router.navigateByUrl('/profilepage')
+      
       },
       error: (error: any) => {
         console.error('Error occurred', error);
