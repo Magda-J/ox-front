@@ -21,6 +21,7 @@ export interface ParticipantInterface {
   export interface UserProfileData {
     bio: string;
     profilePic: string;
+    username: string;
   }
 
 // import { HttpContext, HttpHeaders, HttpParams } from '@angular/common/http';

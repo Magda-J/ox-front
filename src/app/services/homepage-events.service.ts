@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
 import { Event } from '../cardprofile/cardprofile.component';
 import { EventData } from '../card-home/card-home.component';
+import { UserProfileData } from '../../types';
 
 
 @Injectable({
@@ -20,4 +21,9 @@ export class HomepageEventsService {
       map(events => events.find(event => event._id === id))
     );
   }
+
+  getUserInfo(id: string): Observable<UserProfileData | undefined> {
+    return this.http.get<UserProfileData>(`http://localhost:3000/user/event/${id}/creator`);
+}
+
 }
