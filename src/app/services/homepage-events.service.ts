@@ -12,7 +12,7 @@ export class HomepageEventsService {
   constructor(private http: HttpClient) {}
 
   getHomeEvents(): Observable<EventData[]> {
-    return this.http.get<EventData[]>('http://localhost:3000/events');
+    return this.http.get<EventData[]>('https://ox-back.onrender.com/events');
    
   }
   getHomeEvent(id: string): Observable<EventData | undefined> {
