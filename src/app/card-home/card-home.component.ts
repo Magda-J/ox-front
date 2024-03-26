@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { HomepageEventsService } from '../services/homepage-events.service';
 
@@ -19,25 +18,11 @@ export class CardHomeComponent implements OnInit {
   filteredEvents: EventData[] = [];
   
 
-  constructor(private http: HttpClient, private eventService: HomepageEventsService) {}
+  constructor(private eventService: HomepageEventsService) {}
 
   ngOnInit(): void {
     this.getHomeEvents();
   }
-
-  // fetchEventData(): void {
-  //   this.http.get<EventData[]>('http://localhost:3000/events')
-  //     .subscribe({
-  //       next: (data) => {
-  //         this.events = data;
-  //         this.filterEvents();
-  //         console.log('Events data:', this.events);
-  //       },
-  //       error: (error) => {
-  //         console.error('Error fetching events:', error);
-  //       }
-  //     });
-  // }
 
   getHomeEvents() {
     this.eventService.getHomeEvents()
