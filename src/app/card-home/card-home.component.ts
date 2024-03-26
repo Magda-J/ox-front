@@ -1,8 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { HomepageEventsService } from '../services/homepage-events.service';
-
 
 @Component({
   selector: 'app-card-home',
@@ -12,13 +11,19 @@ import { HomepageEventsService } from '../services/homepage-events.service';
   styleUrls: ['./card-home.component.css'],
 })
 
-export class CardHomeComponent implements OnInit {
+export class CardHomeComponent implements OnChanges {
   @Input() selectedCategory: string = 'All';
   events: EventData[] = [];  
   filteredEvents: EventData[] = [];
   
 
   constructor(private eventService: HomepageEventsService) {}
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['selectedCategory']) {
+      this.filterEvents();
+    }
+  }  
 
   ngOnInit(): void {
     this.getHomeEvents();
@@ -30,6 +35,7 @@ export class CardHomeComponent implements OnInit {
         this.events = events;
         this.filterEvents();
         console.log("Home events", this.events)
+        console.log("Filtered events", this.filteredEvents); 
       });
   }
 
@@ -40,12 +46,7 @@ export class CardHomeComponent implements OnInit {
     } else {
       this.filteredEvents = this.events.filter(event => event.tags.includes(this.selectedCategory));
     }
-  }
-
-  onCategorySelected(category: string): void {
-    this.selectedCategory = category;
-    this.filterEvents();
-  }
+  }  
 
 }
 
@@ -62,5 +63,4 @@ export interface EventData {
   endtime: string,
   spaces: number
   booked: []
- 
 }
