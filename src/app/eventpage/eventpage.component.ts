@@ -8,6 +8,7 @@ import { Event } from '../cardprofile/cardprofile.component';
 import { HomepageEventsService } from '../services/homepage-events.service';
 import { EventData } from '../card-home/card-home.component';
 import { NavbarComponent } from '../navbar/navbar.component';
+import { UserProfileData } from '../../types';
 
 
 @Component({
@@ -20,8 +21,12 @@ import { NavbarComponent } from '../navbar/navbar.component';
 export class EventpageComponent implements OnInit {
   event: EventData | undefined;
   eventid: string | null = ''
+  user: UserProfileData | undefined;
 
   constructor(private route: ActivatedRoute, private eventService: HomepageEventsService) {}
+  
+ 
+
 
   ngOnInit(): void {
     const getEventId = this.route.snapshot.paramMap.get('id');
@@ -31,10 +36,26 @@ export class EventpageComponent implements OnInit {
         .subscribe(event => {
           this.event = event;
           console.log("check eventpage event", this.event)
+
+
+          
         });
     }
-  }
+  //  this.eventService.getUserInfo()
+  const getEventId2 = this.route.snapshot.paramMap.get('id');
+  this.eventid = getEventId2;
+  console.log("eventid 2", getEventId2)
+    if(getEventId2) {
+   
+    this.eventService.getUserInfo(getEventId2)
+      .subscribe(user => {
+        this.user = user;
+        console.log(this.user)
+      });
+  
+}
+}
 
-
+ 
 
 }

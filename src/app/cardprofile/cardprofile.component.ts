@@ -49,5 +49,5 @@ export interface Event {
   endtime: string;
   spaces: number;
   tags:[string];
- 
+  booked: []
 }

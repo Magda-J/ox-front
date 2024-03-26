@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Event } from '../cardprofile/cardprofile.component';
 import { map } from 'rxjs/operators';
+import { UserProfileData } from '../../types';
 
 @Injectable({
   providedIn: 'root'
@@ -19,4 +20,8 @@ export class EventService {
       map(events => events.find(event => event._id === id))
     );
   }
+
+
+
+
 }

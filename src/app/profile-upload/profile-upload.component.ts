@@ -15,6 +15,7 @@ export class ProfileUploadComponent {
   user: UserProfileData = {
     bio: '',
     profilePic: '',
+    username: '',
   };
 
   constructor(
@@ -38,6 +39,7 @@ export class ProfileUploadComponent {
         this.user = {
           bio: '',
           profilePic: '',
+          username: '',
         };
         window.location.reload();
       },

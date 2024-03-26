@@ -34,6 +34,7 @@ export class ProfilepageComponent {
   user: UserProfileData = {
     bio: '',
     profilePic: '',
+    username: '',
   };
 
   constructor(
@@ -65,6 +66,7 @@ export class ProfilepageComponent {
         this.user = {
           bio: '',
           profilePic: '',
+          username: '',
         };
       },
       error: (error: any) => {

@@ -5,6 +5,7 @@ import { EventService } from '../services/event-add.service';
 import { Event } from '../cardprofile/cardprofile.component';
 import { HttpClient } from '@angular/common/http';
 import { NavbarComponent } from '../navbar/navbar.component';
+import { UserProfileData } from '../../types';
 
 
 @Component({
@@ -16,6 +17,11 @@ import { NavbarComponent } from '../navbar/navbar.component';
 })
 export class EventpageUserComponent implements OnInit {
   event: Event | undefined;
+  user: UserProfileData = {
+    bio: '',
+    profilePic: '',
+    username: '',
+  };
 
   constructor(private route: ActivatedRoute, private eventService: EventService, private http: HttpClient, private router: Router) {}
 
@@ -28,6 +34,9 @@ export class EventpageUserComponent implements OnInit {
          
         });
     }
+
+   this.getUserData()
+
   }
 
   onDelete() {
@@ -49,6 +58,25 @@ export class EventpageUserComponent implements OnInit {
       },
     });
   }
+
+
+  getUserData(): void {
+    
+    const apiUrl = 'http://localhost:3000/user/fetchUserInfo'
+
+    this.http.get(apiUrl)
+      .subscribe({
+        next: (response: any) => {
+          console.log('GET request successful', response);
+          this.user = response;
+         console.log("USER STUFF TO FETCH", this.user)
+        },
+        error: (error: any) => {
+          console.error('Error occurred during GET request', error);
+        }
+      });
+  }
+
 
 
 
