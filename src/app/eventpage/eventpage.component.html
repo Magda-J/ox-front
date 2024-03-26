@@ -26,11 +26,11 @@
           <div class="flex items-center gap-4">
             <img
               class="w-10 h-10 rounded-full"
-              src="https://images.pexels.com/photos/1820559/pexels-photo-1820559.jpeg?auto=compress&cs=tinysrgb&w=600"
+              [src]="user?.profilePic"
               alt=""
             />
             <div class="font-medium text-white hover:text-orange-700">
-              <div>Jese_Leos</div>
+              <div>{{ user?.username }}</div>
             </div>
           </div>
 
@@ -96,7 +96,7 @@
         <div class="w-full md:w-2/5 flex flex-col items-center justify-center">
           <figure class="w-1/2 md:w-full rounded-full overflow-hidden">
             <img
-              src="https://images.pexels.com/photos/1820559/pexels-photo-1820559.jpeg?auto=compress&cs=tinysrgb&w=600"
+              [src]="user?.profilePic"
               alt="profile image"
             />
           </figure>
@@ -108,14 +108,12 @@
             <h2
               class="text-center md:text-left text-2xl font-bold text-gray-900"
             >
-              Justine Howell
+              {{user?.username}}
             </h2>
             <p
               class="inline text-gray-700 font-normal leading-6 w-full text-base text-justify"
             >
-              From mastering classic dishes to experimenting with innovative
-              flavors, these classes offer a dynamic platform to expand your
-              culinary repertoire and discover the joy.
+              {{user?.bio}}
             </p>
           </div>
         </div>
