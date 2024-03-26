@@ -51,17 +51,14 @@
 
         <div class="flex md:flex-col-1 md:w-1/4">
           <div class="mx-auto">
-            <div
-              class="mx-auto my-auto md:h-[100px] md:w-[100px] lg:h-[250px] lg:w-[250px] rounded-full overflow-hidden flex items-center"
-            >
-              <img [src]="user.profilePic" alt="profile image" />
+            <div class="mb-2">
+              <img class="mx-auto my-auto min-h-[250px] min-w-[250px] h-[250px] w-[250px] rounded-full overflow-hidden flex items-center object-cover" [src]="user.profilePic" alt="profile image" />
             </div>
-        
             <app-profile-upload></app-profile-upload>
           </div>
         </div>
         <div
-          class="flex flex-wrap md:flex-col-1 md:w-[35%] lg:w-[44%] gap-4 border border-orange-200 rounded-md p-2 mb-4 sm:mb-0"
+          class="flex flex-wrap md:flex-col-1 w-full lg:w-[44%] gap-4 border border-orange-200 rounded-md p-2 mb-4 sm:mb-0"
         >
           <p
             class="inline text-gray-700 font-normal leading-6 w-full text-base text-justify sm:my-auto"
