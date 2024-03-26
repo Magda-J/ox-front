@@ -3,7 +3,6 @@ import { CommonModule, DOCUMENT } from '@angular/common';
 import { Component, Inject, OnInit, inject } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { AuthService } from '../services/auth.service';
-import { HttpClient } from '@angular/common/http';
 
 
 
@@ -42,7 +41,10 @@ logout(): void {
 
 }
 
-constructor(@Inject(DOCUMENT) private document: Document) { }
+constructor(
+  private router: Router,
+  @Inject(DOCUMENT) private document: Document
+) { }
 
 isTokenPresent(): boolean {
   return !!this.document.defaultView?.localStorage.getItem('token');
@@ -53,6 +55,11 @@ isTokenPresent(): boolean {
 //   isActive(url: string): boolean {
 //     return this.router.url === url;
 
+}
+
+
+  isActive(url: string): boolean {
+    return this.router.url === url;
 }
 
 }
