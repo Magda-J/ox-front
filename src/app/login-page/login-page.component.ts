@@ -6,11 +6,12 @@ import { HttpClient } from '@angular/common/http';
 import { UserData } from '../../types';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
+import { NavbarComponent } from '../navbar/navbar.component';
 
 @Component({
   selector: 'app-login-page',
   standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, NavbarComponent],
   templateUrl: './login-page.component.html',
   styleUrl: './login-page.component.css'
 })
