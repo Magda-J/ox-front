@@ -43,6 +43,7 @@ export class CardHomeComponent implements OnInit {
     this.eventService.getHomeEvents()
       .subscribe(events => {
         this.events = events;
+        this.filterEvents();
         console.log("Home events", this.events)
       });
   }
