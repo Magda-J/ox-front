@@ -7,12 +7,13 @@ import { EventService } from '../services/event-add.service';
 import { Event } from '../cardprofile/cardprofile.component';
 import { HomepageEventsService } from '../services/homepage-events.service';
 import { EventData } from '../card-home/card-home.component';
+import { NavbarComponent } from '../navbar/navbar.component';
 
 
 @Component({
   selector: 'app-eventpage',
   standalone: true,
-  imports: [CommonModule, RouterLink, RouterLinkActive],
+  imports: [CommonModule, RouterLink, RouterLinkActive, NavbarComponent],
   templateUrl: './eventpage.component.html',
   styleUrl: './eventpage.component.css',
 })
