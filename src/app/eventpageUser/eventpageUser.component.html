@@ -164,9 +164,9 @@
           </div>
 
           <h2 class="text-md font-semibold text-gray-500 sm:text-3xl">
-            {{event?.spaces}}
+            {{event?.booked?.length}}
             <span class="mr-2 text-md sm:text-base font-medium"
-              >/10 spots remaining</span
+              >/ {{event?.spaces}} spots remaining</span
             >
           </h2>
           <!-- <button

@@ -61,5 +61,6 @@ export interface EventData {
   starttime: string,
   endtime: string,
   spaces: number
+  booked: []
  
 }
