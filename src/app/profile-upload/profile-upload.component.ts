@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { UserProfileData } from '../../types';
 import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-profile-upload',
@@ -20,7 +21,7 @@ export class ProfileUploadComponent {
 
   constructor(
     private http: HttpClient,
-        
+    private toastr: ToastrService   
     ) {}
 
 
@@ -34,7 +35,11 @@ export class ProfileUploadComponent {
     this.http.put(apiUrl, this.user).subscribe({
       next: (response: any) => {
         console.log('Post successful', response);
-        
+        this.toastr.success('Profile photo saved successfully!', '', {
+          closeButton: true,
+          positionClass: 'toast-top-left',
+          
+        });
         
         this.user = {
           bio: '',

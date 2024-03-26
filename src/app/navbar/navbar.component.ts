@@ -3,6 +3,7 @@ import { CommonModule, DOCUMENT } from '@angular/common';
 import { Component, Inject, OnInit, inject } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { AuthService } from '../services/auth.service';
+import { ToastrService } from 'ngx-toastr';
 
 
 
@@ -16,6 +17,8 @@ import { AuthService } from '../services/auth.service';
 })
 export class NavbarComponent implements OnInit {
   isMenuHidden: boolean = true;
+
+  
   toggleMenu() {
     this.isMenuHidden = !this.isMenuHidden;
   }
@@ -25,9 +28,13 @@ export class NavbarComponent implements OnInit {
  
  
 authService = inject(AuthService)
+toastr = inject(ToastrService)
+
 
 ngOnInit(): void {
-  
+   
+
+
 }
 
 
@@ -38,7 +45,11 @@ logout(): void {
   localStorage.setItem('rating', '')
   localStorage.setItem('bio', '')
   localStorage.setItem('profilePic', '')
-
+  this.toastr.success('Logged out successfully!', 'Success!', {
+    closeButton: true,
+    positionClass: 'toast-top-left',
+    timeOut: 1000
+  });
 }
 
 constructor(
@@ -49,11 +60,7 @@ constructor(
 isTokenPresent(): boolean {
   return !!this.document.defaultView?.localStorage.getItem('token');
 
-//   MJ commented out during merging 
-//   constructor(private router: Router) {}
 
-//   isActive(url: string): boolean {
-//     return this.router.url === url;
 
 }
 

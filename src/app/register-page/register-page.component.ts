@@ -6,6 +6,7 @@ import { HttpClient } from '@angular/common/http';
 import { UserData } from '../../types';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-register-page',
@@ -24,6 +25,7 @@ export class RegisterPageComponent {
     private http: HttpClient,
     private authService: AuthService,
     private router: Router,
+    private toastr: ToastrService
     
     ) {}
 
@@ -34,6 +36,11 @@ export class RegisterPageComponent {
     this.http.post(apiUrl, this.user).subscribe({
       next: (response: any) => {
         console.log('Post successful', response);
+        this.toastr.success('Registered successfully! Please log in to view your profile.', 'Success!', {
+          closeButton: true,
+          positionClass: 'toast-top-left',
+          timeOut: 5000
+        });
         console.log("user signal", response)
         this.router.navigateByUrl('/login')
 

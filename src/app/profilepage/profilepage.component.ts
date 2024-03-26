@@ -10,26 +10,31 @@ import { UserProfileData } from '../../types';
 import { FormsModule } from '@angular/forms';
 import { ProfileUploadComponent } from '../profile-upload/profile-upload.component';
 
-
-
-
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-profilepage',
   standalone: true,
 
-  imports: [BioeditComponent, CreateexperiencebuttonComponent, CardprofileComponent, CommonModule, NavbarComponent, FormsModule, ProfileUploadComponent],
+  imports: [
+    BioeditComponent,
+    CreateexperiencebuttonComponent,
+    CardprofileComponent,
+    CommonModule,
+    NavbarComponent,
+    FormsModule,
+    ProfileUploadComponent,
+    
+  ],
 
   templateUrl: './profilepage.component.html',
-  styleUrl: './profilepage.component.css'
+  styleUrl: './profilepage.component.css',
 })
 export class ProfilepageComponent {
-
   username: string | null = null;
   rating: number | null = null;
   bio: string | null = null;
   profilePic: string | null = null;
-
 
   user: UserProfileData = {
     bio: '',
@@ -37,22 +42,18 @@ export class ProfilepageComponent {
     username: '',
   };
 
-  constructor(
-    private http: HttpClient,
-        
-    ) {}
+  constructor(private http: HttpClient, private toastr: ToastrService) {}
 
-   
+
+
   ngOnInit(): void {
-   
     this.username = localStorage.getItem('username');
     this.bio = localStorage.getItem('bio');
     this.profilePic = localStorage.getItem('profilePic');
     const ratingString = localStorage.getItem('rating');
     this.rating = ratingString ? parseFloat(ratingString) : null;
-    this.getUserData()
+    this.getUserData();
   }
-
 
   onSubmit() {
     const apiUrl = 'http://localhost:3000/user/putUserInfo';
@@ -61,8 +62,14 @@ export class ProfilepageComponent {
     this.http.put(apiUrl, this.user).subscribe({
       next: (response: any) => {
         console.log('Post successful', response);
-        
-        
+        this.toastr.success('Profile photos saved successfully!', '', {
+          closeButton: true,
+          positionClass: 'toast-top-left',
+          
+        });
+
+
+
         this.user = {
           bio: '',
           profilePic: '',
@@ -75,27 +82,18 @@ export class ProfilepageComponent {
     });
   }
 
-
-
   getUserData(): void {
-    
-    const apiUrl = 'http://localhost:3000/user/fetchUserInfo'
+    const apiUrl = 'http://localhost:3000/user/fetchUserInfo';
 
-    this.http.get(apiUrl)
-      .subscribe({
-        next: (response: any) => {
-          console.log('GET request successful', response);
-          this.user = response;
-         console.log("USER STUFF TO FETCH", this.user)
-        },
-        error: (error: any) => {
-          console.error('Error occurred during GET request', error);
-        }
-      });
+    this.http.get(apiUrl).subscribe({
+      next: (response: any) => {
+        console.log('GET request successful', response);
+        this.user = response;
+        console.log('USER STUFF TO FETCH', this.user);
+      },
+      error: (error: any) => {
+        console.error('Error occurred during GET request', error);
+      },
+    });
   }
-
-
-
-
-
 }

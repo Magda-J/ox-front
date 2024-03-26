@@ -6,29 +6,28 @@ import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { ActivatedRoute, Router } from '@angular/router';
-
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-form-user',
   standalone: true,
   imports: [DropdownComponent, CommonModule, FormsModule, NavbarComponent],
   templateUrl: './form-user.component.html',
-  styleUrl: './form-user.component.css'
+  styleUrl: './form-user.component.css',
 })
 export class FormUserComponent implements OnInit {
   showEvents: boolean = false;
 
   username: string | null = null;
+  profilePic: string | null = null;
   rating: number | null = null;
 
   ngOnInit(): void {
     this.username = localStorage.getItem('username');
+    this.profilePic = localStorage.getItem('profilePic');
     const ratingString = localStorage.getItem('rating');
     this.rating = ratingString ? parseFloat(ratingString) : null;
-    this.fetchUserEvent()
-
-
-
+    this.fetchUserEvent();
   }
   toggleEvents() {
     this.showEvents = !this.showEvents;
@@ -36,42 +35,40 @@ export class FormUserComponent implements OnInit {
 
   eventUser: EventDataUser = {
     eventName: '',
-    eventImg: '',    
+    eventImg: '',
     price: 0,
     tags: [],
     description: '',
     date: '',
     starttime: '',
     endtime: '',
-    spaces: 0
+    spaces: 0,
   };
 
-  constructor(private http: HttpClient, private route: ActivatedRoute, private router: Router) {}
+  constructor(
+    private http: HttpClient,
+    private route: ActivatedRoute,
+    private router: Router,
+    private toastr: ToastrService
+  ) {}
 
-// get single event 
+  // get single event
 
-fetchUserEvent(): void {
+  fetchUserEvent(): void {
     const eventid = this.route.snapshot.params['id'];
-    const apiUrl = `http://localhost:3000/events/${eventid}`
+    const apiUrl = `http://localhost:3000/events/${eventid}`;
 
-    this.http.get(apiUrl)
-      .subscribe({
-        next: (response: any) => {
-          console.log('GET request successful', response);
-          this.eventUser = response;
-          // this.totalPrice = response.price.toString();
-        },
-        error: (error: any) => {
-          console.error('Error occurred during GET request', error);
-        }
-      });
+    this.http.get(apiUrl).subscribe({
+      next: (response: any) => {
+        console.log('GET request successful', response);
+        this.eventUser = response;
+        // this.totalPrice = response.price.toString();
+      },
+      error: (error: any) => {
+        console.error('Error occurred during GET request', error);
+      },
+    });
   }
-
-
-
-
-
-
 
   onSubmit() {
     console.log(this.eventUser);
@@ -82,23 +79,26 @@ fetchUserEvent(): void {
     this.http.put(apiUrl, this.eventUser).subscribe({
       next: (response: any) => {
         console.log('Edit successful', response);
+        this.toastr.success('Event edited successfully!', 'Success!', {
+          closeButton: true,
+          positionClass: 'toast-top-left',
+          timeOut: 1000
+        });
 
         this.eventUser = {
           eventName: '',
-          eventImg: '',    
+          eventImg: '',
           price: 0,
           tags: [],
           description: '',
           date: '',
           starttime: '',
           endtime: '',
-          spaces: 0
+          spaces: 0,
         };
-        this.router.navigateByUrl('/profilepage')
-      
+        this.router.navigateByUrl('/profilepage');
       },
 
-      
       error: (error: any) => {
         console.error('Error occurred', error);
       },
@@ -107,14 +107,13 @@ fetchUserEvent(): void {
 }
 
 export interface EventDataUser {
-  eventName: string,
-  eventImg: string,    
-  price: number,
-  tags: string[],
-  description: string
-  date: string,
-  starttime: string,
-  endtime: string,
-  spaces: number,
+  eventName: string;
+  eventImg: string;
+  price: number;
+  tags: string[];
+  description: string;
+  date: string;
+  starttime: string;
+  endtime: string;
+  spaces: number;
 }
-

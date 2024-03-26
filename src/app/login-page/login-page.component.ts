@@ -6,6 +6,7 @@ import { HttpClient } from '@angular/common/http';
 import { UserData } from '../../types';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login-page',
@@ -27,6 +28,7 @@ export class LoginPageComponent {
     private http: HttpClient,
     private router: Router,
     private authService: AuthService,
+    private toastr: ToastrService
     
     ) {}
 
@@ -37,6 +39,12 @@ export class LoginPageComponent {
     this.http.post(apiUrl, this.user).subscribe({
       next: (response: any) => {
         console.log('Post successful', response);
+        this.toastr.success('Logged in successfully!', 'Success!', {
+          closeButton: true,
+          positionClass: 'toast-top-left',
+          timeOut: 2000
+        });
+
         localStorage.setItem('token', response.token)
         localStorage.setItem('username', response.username)
         localStorage.setItem('rating', response.rating)
