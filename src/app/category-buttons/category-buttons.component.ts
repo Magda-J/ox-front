@@ -9,7 +9,7 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./category-buttons.component.css']
 })
 export class CategoryButtonsComponent {
-  showCategories = false;
+  showCategories = true;
   categories: string[] = ['All', 'Creative Arts', 'Language Learning', 'DIY and Crafts', 'Fitness and Wellness', 'Entrepreneurship', 'Science and Nature', 'Travel and Culture', 'Hobbies and Interests', 'Other'];
 
   toggleCategories() {

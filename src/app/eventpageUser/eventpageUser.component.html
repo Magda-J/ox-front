@@ -1,6 +1,6 @@
 <!-- Background image -->
  <app-navbar></app-navbar>
-<div class="relative sm:h-[350px]">
+<div class="relative sm:h-[350px] mt-20">
  
   <div class="absolute inset-0" *ngIf="event">
     <img
@@ -62,7 +62,7 @@
        <div class="flex flex-row">
         <div *ngIf="event">
           <button 
-          class="mt-6 px-8 py-2 tracking-wide text-white capitalize transition-colors duration-200 transform bg-orange-600 rounded-md hover:bg-orange-300 focus:outline-none focus:bg-orange-400 focus:ring focus:ring-blue-300 focus:ring-opacity-80"
+          class="px-8 py-2 mr-2 lg:mt-6 tracking-wide text-white capitalize transition-colors duration-200 transform bg-orange-600 rounded-md hover:bg-orange-300 focus:outline-none focus:bg-orange-400 focus:ring focus:ring-blue-300 focus:ring-opacity-80"
           [routerLink]="['/formUser/', event._id]" routerLinkActive="active">Edit</button>
           </div>
 
@@ -70,7 +70,7 @@
           <button
           id="submit"
           type="submit"
-          class="mt-6 ml-4 px-6 py-2 tracking-wide text-white capitalize transition-colors duration-200 transform bg-orange-600 rounded-md hover:bg-orange-300 focus:outline-none focus:bg-orange-400 focus:ring focus:ring-blue-300 focus:ring-opacity-80"
+          class="px-6 py-2 lg:mt-6 tracking-wide text-white capitalize transition-colors duration-200 transform bg-orange-600 rounded-md hover:bg-orange-300 focus:outline-none focus:bg-orange-400 focus:ring focus:ring-blue-300 focus:ring-opacity-80"
           >Delete</button>
         </div>
         </div>
@@ -85,7 +85,7 @@
 <!-- Event description -->
 
 <p
-  class="mt-6 px-6 text-justify text-sm sm:text-md leading-loose"
+  class="mt-6 mb-6 px-6 text-orange-900 text-center text-md md:text-lg leading-loose"
   *ngIf="event"
 >
   {{ event.description }}

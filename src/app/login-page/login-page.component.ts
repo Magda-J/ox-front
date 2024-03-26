@@ -6,12 +6,16 @@ import { HttpClient } from '@angular/common/http';
 import { UserData } from '../../types';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
+
 import { ToastrService } from 'ngx-toastr';
+
+import { NavbarComponent } from '../navbar/navbar.component';
+
 
 @Component({
   selector: 'app-login-page',
   standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, NavbarComponent],
   templateUrl: './login-page.component.html',
   styleUrl: './login-page.component.css'
 })
@@ -73,19 +77,7 @@ export class LoginPageComponent {
   }
 
 
-  // tutorial
-  // onSubmit(): void {
-  //   this.http
-  //   .post<{ user: UserData}>('http://localhost:3000/auth/authorisation', {
-  //   user: this.form.getRawValue(),
-  // })
-  // .subscribe((response) => {
-  //   console.log('response', response)
-  //   // localStorage.setItem('token', response.user.token)
-  //   this.authService.currentUserSig.set(response.user)
-  // });
-
-  // }
+  
 
 }
 

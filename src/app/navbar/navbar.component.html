@@ -24,6 +24,7 @@
               class="text-orange-500 hover:font-bold"
               routerLink="/login"
               routerLinkActive="active"
+              [class.font-bold]="isActive('/login')"
               >Login</a
             >
   
@@ -35,6 +36,7 @@
               class="text-orange-500 hover:font-bold"
               routerLink="/register"
               routerLinkActive="active"
+              [class.font-bold]="isActive('/register')"
               >Register</a
             >
           </li>
@@ -57,7 +59,7 @@
               <div class="line h-1 mb-2 w-10 bg-orange-600"></div>
               <div class="line h-1 w-10 bg-orange-600"></div>
           </div>
-          <ul class="mr-4 bg-orange-100 text-lg pl-2 pr-2" [class.hidden]="isMenuHidden">
+          <ul class="mr-4 bg-orange-100 text-md p-1" [class.hidden]="isMenuHidden">
               <li><a routerLink="/" class="nav-link text-orange-500 hover:font-bold" [class.font-bold]="isActive('/')">Home</a></li>
               <li *ngIf="isTokenPresent()">
                 <a
@@ -75,6 +77,7 @@
                   class="text-orange-500 hover:font-bold"
                   routerLink="/login"
                   routerLinkActive="active"
+                  [class.font-bold]="isActive('/login')"
                   >Login</a
                 >
               </li>
@@ -84,6 +87,7 @@
                   class="text-orange-500 hover:font-bold"
                   routerLink="/register"
                   routerLinkActive="active"
+                  [class.font-bold]="isActive('/register')"
                   >Register</a
                 >
               </li>
