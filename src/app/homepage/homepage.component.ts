@@ -18,6 +18,7 @@ export class HomepageComponent {
 
   onCategorySelected(category: string): void {
     this.selectedCategory = category;
-  }
+    console.log("My cat test ", this.selectedCategory)
+  } 
 }
   

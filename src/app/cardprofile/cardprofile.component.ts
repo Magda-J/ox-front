@@ -32,10 +32,7 @@ export class CardprofileComponent implements OnInit {
   }
 
 
-  
-  
     
-  
 
   
 }
@@ -51,5 +48,6 @@ export interface Event {
   starttime: string;
   endtime: string;
   spaces: number;
+  tags:[string];
  
 }

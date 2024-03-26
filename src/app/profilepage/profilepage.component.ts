@@ -8,6 +8,7 @@ import { NavbarComponent } from '../navbar/navbar.component';
 import { HttpClient } from '@angular/common/http';
 import { UserProfileData } from '../../types';
 import { FormsModule } from '@angular/forms';
+import { ProfileUploadComponent } from '../profile-upload/profile-upload.component';
 
 
 
@@ -17,7 +18,7 @@ import { FormsModule } from '@angular/forms';
   selector: 'app-profilepage',
   standalone: true,
 
-  imports: [BioeditComponent, CreateexperiencebuttonComponent, CardprofileComponent, CommonModule, NavbarComponent, FormsModule],
+  imports: [BioeditComponent, CreateexperiencebuttonComponent, CardprofileComponent, CommonModule, NavbarComponent, FormsModule, ProfileUploadComponent],
 
   templateUrl: './profilepage.component.html',
   styleUrl: './profilepage.component.css'
@@ -48,7 +49,7 @@ export class ProfilepageComponent {
     this.profilePic = localStorage.getItem('profilePic');
     const ratingString = localStorage.getItem('rating');
     this.rating = ratingString ? parseFloat(ratingString) : null;
-  
+    this.getUserData()
   }
 
 
@@ -61,7 +62,6 @@ export class ProfilepageComponent {
         console.log('Post successful', response);
         
         
-
         this.user = {
           bio: '',
           profilePic: '',
@@ -72,6 +72,26 @@ export class ProfilepageComponent {
       },
     });
   }
+
+
+
+  getUserData(): void {
+    
+    const apiUrl = 'http://localhost:3000/user/fetchUserInfo'
+
+    this.http.get(apiUrl)
+      .subscribe({
+        next: (response: any) => {
+          console.log('GET request successful', response);
+          this.user = response;
+         console.log("USER STUFF TO FETCH", this.user)
+        },
+        error: (error: any) => {
+          console.error('Error occurred during GET request', error);
+        }
+      });
+  }
+
 
 
 

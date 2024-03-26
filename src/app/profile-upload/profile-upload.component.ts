@@ -4,13 +4,13 @@ import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-bioedit',
+  selector: 'app-profile-upload',
   standalone: true,
   imports: [FormsModule],
-  templateUrl: './bioedit.component.html',
-  styleUrl: './bioedit.component.css'
+  templateUrl: './profile-upload.component.html',
+  styleUrl: './profile-upload.component.css'
 })
-export class BioeditComponent {
+export class ProfileUploadComponent {
 
   user: UserProfileData = {
     bio: '',
@@ -25,6 +25,7 @@ export class BioeditComponent {
 
 
 
+
   onSubmit() {
     const apiUrl = 'http://localhost:3000/user/putUserInfo';
 
@@ -34,17 +35,17 @@ export class BioeditComponent {
         console.log('Post successful', response);
         
         
-
         this.user = {
           bio: '',
           profilePic: '',
         };
-       window.location.reload();
+        window.location.reload();
       },
       error: (error: any) => {
         console.error('Error occurred', error);
       },
     });
   }
+
 
 }

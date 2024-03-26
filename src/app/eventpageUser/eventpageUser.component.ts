@@ -4,12 +4,13 @@ import { CommonModule } from '@angular/common';
 import { EventService } from '../services/event-add.service';
 import { Event } from '../cardprofile/cardprofile.component';
 import { HttpClient } from '@angular/common/http';
+import { NavbarComponent } from '../navbar/navbar.component';
 
 
 @Component({
   selector: 'app-eventpage',
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule, RouterLink, NavbarComponent],
   templateUrl: './eventpageUser.component.html',
   styleUrl: './eventpageUser.component.css',
 })

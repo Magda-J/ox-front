@@ -1,6 +1,7 @@
 <!-- Background image -->
-
+ <app-navbar></app-navbar>
 <div class="relative sm:h-[350px]">
+ 
   <div class="absolute inset-0" *ngIf="event">
     <img
       [src]="event.eventImg"
@@ -164,15 +165,15 @@
 
           <h2 class="text-md font-semibold text-gray-500 sm:text-3xl">
             {{event?.spaces}}
-            <span class="text-md sm:text-base font-medium"
+            <span class="mr-2 text-md sm:text-base font-medium"
               >/10 spots remaining</span
             >
           </h2>
-          <button
+          <!-- <button
             class="ml-2 px-8 py-2 mr-2 tracking-wide text-white capitalize transition-colors duration-200 transform bg-orange-600 rounded-md hover:bg-orange-300 focus:outline-none focus:bg-orange-400 focus:ring focus:ring-blue-300 focus:ring-opacity-80"
           >
             Book
-          </button>
+          </button> -->
         </div>
         <!-- <div
           class="flex items-center justify-between max-w-2xl sm:px-4 py-4 mx-auto border cursor-pointer rounded-xl"
