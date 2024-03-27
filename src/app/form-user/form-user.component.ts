@@ -22,6 +22,8 @@ export class FormUserComponent implements OnInit {
   rating: number | null = null;
   profilePic: string | null = null;
 
+  editSuccess: boolean = false;
+
   ngOnInit(): void {
     this.username = localStorage.getItem('username');
     this.profilePic = localStorage.getItem('profilePic');
@@ -96,8 +98,17 @@ fetchUserEvent(): void {
           endtime: '',
           spaces: 0
         };
-        this.router.navigateByUrl('/profilepage')
+       
       
+        this.editSuccess = true;
+
+        setTimeout(() => {
+          this.editSuccess = false;
+          this.router.navigateByUrl('/profilepage') 
+      }, 2000);
+
+
+
       },
 
       

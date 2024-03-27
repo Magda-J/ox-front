@@ -23,6 +23,8 @@ export class EventpageUserComponent implements OnInit {
     username: '',
   };
 
+  deleteSuccess: boolean = false;
+
   constructor(private route: ActivatedRoute, private eventService: EventService, private http: HttpClient, private router: Router) {}
 
   ngOnInit(): void {
@@ -50,7 +52,18 @@ export class EventpageUserComponent implements OnInit {
     this.http.delete(apiUrl).subscribe({
       next: (response: any) => {
         console.log('Delete successful', response);
-        this.router.navigateByUrl('/profilepage')
+       
+
+
+        this.deleteSuccess = true;
+
+        setTimeout(() => {
+          this.deleteSuccess = false;
+          this.router.navigateByUrl('/profilepage') 
+      }, 2000);
+
+
+
 
       },
       error: (error: any) => {

@@ -21,7 +21,7 @@ export class LoginPageComponent {
     password: '',
   };
 
- 
+  loginSuccess: boolean = false;
 
 
   constructor(
@@ -44,20 +44,29 @@ export class LoginPageComponent {
         localStorage.setItem('bio', response.bio)
         localStorage.setItem('profilePic', response.profilePic)
         
+        this.loginSuccess = true;
+
+
         const userData: UserData = {
           username: response.username,
           password: response.password
         };
-        // this.authService.setCurrentUser(userData);
-        // console.log('Set current user:', userData);
+       
+           setTimeout(() => {
+          this.loginSuccess = false;
+           this.router.navigateByUrl('/profilepage')
+      }, 1000);
         
-        
-        this.router.navigateByUrl('/profilepage')
+       
         
         this.user = {
           username: '',
           password: '',
         };
+
+     
+
+
       },
       error: (error: any) => {
         console.error('Error occurred', error);
@@ -65,20 +74,6 @@ export class LoginPageComponent {
     });
   }
 
-
-  // tutorial
-  // onSubmit(): void {
-  //   this.http
-  //   .post<{ user: UserData}>('http://localhost:3000/auth/authorisation', {
-  //   user: this.form.getRawValue(),
-  // })
-  // .subscribe((response) => {
-  //   console.log('response', response)
-  //   // localStorage.setItem('token', response.user.token)
-  //   this.authService.currentUserSig.set(response.user)
-  // });
-
-  // }
 
 }
 

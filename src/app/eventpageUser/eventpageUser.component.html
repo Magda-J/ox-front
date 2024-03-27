@@ -1,5 +1,13 @@
 <!-- Background image -->
  <app-navbar></app-navbar>
+
+ <div *ngIf="deleteSuccess"  class="fixed top-0 left-0 w-full h-full flex items-center justify-center ">
+  <div class="bg-orange-500 p-6 rounded-lg shadow-lg">
+      <p class="text-xl font-bold text-white">Event deleted successfully!</p>
+  </div>
+</div>
+
+
 <div class="relative sm:h-[350px] mt-20">
  
   <div class="absolute inset-0" *ngIf="event">
