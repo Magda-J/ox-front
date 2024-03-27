@@ -20,6 +20,10 @@ export class RegisterPageComponent {
     password: '',
   };
 
+
+  registerSuccess: boolean = false;
+
+
   constructor(
     private http: HttpClient,
     private authService: AuthService,
@@ -35,7 +39,16 @@ export class RegisterPageComponent {
       next: (response: any) => {
         console.log('Post successful', response);
         console.log("user signal", response)
-        this.router.navigateByUrl('/login')
+       
+
+        this.registerSuccess = true;
+
+        setTimeout(() => {
+          this.registerSuccess = false;
+           this.router.navigateByUrl('/login')
+      }, 2000);
+
+
 
         this.user = {
           username: '',

@@ -43,6 +43,13 @@
   }
 </style>
 <app-navbar></app-navbar>
+
+<div *ngIf="editSuccess"  class="fixed top-0 left-0 w-full h-full flex items-center justify-center ">
+  <div class="bg-orange-500 p-6 rounded-lg shadow-lg">
+      <p class="text-xl font-bold text-white">Event edited successfully!</p>
+  </div>
+</div>
+
 <div
   class="flex flex-wrap bg-[#F4F3F1] justify-center items-center sm:flex-col-span-2"
 >

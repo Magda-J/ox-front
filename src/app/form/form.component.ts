@@ -21,6 +21,9 @@ export class FormComponent implements OnInit {
   rating: number | null = null;
   profilePic: string | null = null;
 
+
+  createSuccess: boolean = false;
+
   ngOnInit(): void {
     this.username = localStorage.getItem('username');
     this.profilePic = localStorage.getItem('profilePic');
@@ -71,8 +74,22 @@ export class FormComponent implements OnInit {
             endtime: '',
             spaces: 0
           };
-          this.router.navigateByUrl('/profilepage')
+
+          this.createSuccess = true;
+
+          setTimeout(() => {
+            this.createSuccess = false;
+            this.router.navigateByUrl('/profilepage') 
+        }, 2000);
+
+
+
+          
         },
+
+
+
+
         
         error: (error: any) => {
           console.error('Error occurred', error);
