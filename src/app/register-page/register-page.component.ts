@@ -32,7 +32,7 @@ export class RegisterPageComponent {
     ) {}
 
   onSubmit() {
-    const apiUrl = 'http://localhost:3000/auth/signup';
+    const apiUrl = 'https://ox-back.onrender.com/auth/signup';
 
     // HTTP POST request
     this.http.post(apiUrl, this.user).subscribe({
@@ -118,7 +118,7 @@ export class RegisterPageComponent {
 // // }
 
 //   onSubmit() {
-//     const apiUrl = 'http://localhost:3000/auth/signup';
+//     const apiUrl = 'https://ox-back.onrender.com/auth/signup';
 
 //     // HTTP POST request
 //     this.http.post(apiUrl, this.user).subscribe({
@@ -141,7 +141,7 @@ export class RegisterPageComponent {
 //   //  TUTORIAL Stuff
 //   // onSubmit(): void {
 //   //   this.http
-//   //   .post<{ user: UserData}>('http://localhost:3000/auth/signup', {
+//   //   .post<{ user: UserData}>('https://ox-back.onrender.com/auth/signup', {
 //   //   user: this.form.getRawValue(),
 //   // })
 //   // .subscribe((response) => {

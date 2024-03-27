@@ -30,7 +30,7 @@ export class BioeditComponent {
 
 
   onSubmit() {
-    const apiUrl = 'http://localhost:3000/user/putUserInfo';
+    const apiUrl = 'https://ox-back.onrender.com/user/putUserInfo';
 
     // HTTP POST request
     this.http.put(apiUrl, this.user).subscribe({
