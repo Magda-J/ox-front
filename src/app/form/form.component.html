@@ -39,39 +39,23 @@
   }
 
   .time-input {
-    width: 80px; 
+    width: 80px;
   }
 </style>
 <app-navbar></app-navbar>
-
-<div *ngIf="createSuccess"  class="fixed top-0 left-0 w-full h-full flex items-center justify-center ">
-      <div class="bg-orange-500 p-6 rounded-lg shadow-lg">
-          <p class="text-xl font-bold text-white">Event added successfully!</p>
-      </div>
-  </div>
 
 <div
   class="flex flex-wrap bg-[#F4F3F1] justify-center items-center sm:flex-col-span-2"
 >
   <!-- Form code -->
- 
- 
- 
- 
+
   <div
     class="min-h-screen sm:w-1/3 bg-[#F4F3F1] p-0 sm:p-12 flex flex-col-1 justify-center items-center"
   >
-   
-
-  
-  
-  <div
+    <div
       class="mx-auto max-w-md px-6 py-12 bg-white border-0 shadow-lg sm:rounded-3xl"
     >
-
-    
-
-      <form action='' id="form" novalidate (submit)="onSubmit()">
+      <form action="" id="form" novalidate (submit)="onSubmit()">
         <div class="relative z-0 w-full mb-5">
           <input
             type="text"
@@ -80,8 +64,8 @@
             maxlength="100"
             required
             class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
-           [(ngModel)] = "event.eventName"
-            />
+            [(ngModel)]="event.eventName"
+          />
           <label
             for="name"
             class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500"
@@ -95,8 +79,8 @@
             name="url"
             placeholder=" "
             class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
-            [(ngModel)] = "event.eventImg"
-            />
+            [(ngModel)]="event.eventImg"
+          />
           <label
             for="url"
             class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500"
@@ -122,8 +106,8 @@
               placeholder=" "
               onclick="this.setAttribute('type', 'date');"
               class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
-              [(ngModel)] = "event.date"
-              />
+              [(ngModel)]="event.date"
+            />
             <label
               for="date"
               class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500"
@@ -140,13 +124,14 @@
               placeholder=" "
               onclick="this.setAttribute('type', 'time');"
               class="time-input pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
-              [(ngModel)] = "event.starttime"
-              />
+              [(ngModel)]="event.starttime"
+            />
             <label
               for="time"
               class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500"
-              > Start Time</label>
-            
+            >
+              Start Time</label
+            >
           </div>
           <div class="relative z-0 w-full">
             <input
@@ -155,13 +140,14 @@
               placeholder=" "
               onclick="this.setAttribute('type', 'time');"
               class="time-input pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
-              [(ngModel)] = "event.endtime"
-              />
+              [(ngModel)]="event.endtime"
+            />
             <label
               for="time"
               class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500"
-              > End Time</label>
-            
+            >
+              End Time</label
+            >
           </div>
         </div>
 
@@ -171,8 +157,8 @@
             value=""
             onclick="this.setAttribute('value', this.value);"
             class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none z-1 focus:outline-none focus:ring-0 focus:border-black border-gray-200"
-            [(ngModel)] = "event.spaces"
-            >
+            [(ngModel)]="event.spaces"
+          >
             <option value="" selected disabled hidden></option>
             <option value="1">1</option>
             <option value="2">2</option>
@@ -194,15 +180,15 @@
             >Option has to be selected</span
           >
         </div>
-          
+
         <div class="relative z-0 w-full mb-5">
           <input
             type="number"
             name="money"
             placeholder=" "
             class="pt-3 pb-2 pl-5 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
-            [(ngModel)] = "event.price"
-            />
+            [(ngModel)]="event.price"
+          />
           <div class="absolute top-0 left-0 mt-3 ml-1 text-gray-400">£</div>
           <label
             for="money"
@@ -218,8 +204,8 @@
             placeholder=" "
             maxlength="500"
             class="resize pt-3 pb-2 pr-12 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
-            [(ngModel)] = "event.description"
-            ></textarea>
+            [(ngModel)]="event.description"
+          ></textarea>
 
           <label
             for="duration"
@@ -250,9 +236,8 @@
       <div class="relative sm:h-[350px]">
         <div class="absolute inset-0">
           <img
-          *ngIf="event.eventImg"
-          [src]="event.eventImg"
-            
+            *ngIf="event.eventImg"
+            [src]="event.eventImg"
             class="object-cover w-full h-full rounded-xl"
             alt="Backround Image"
           />
@@ -267,7 +252,7 @@
                 <h2
                   class="hover:text-orange-700 mb-6 font-sans text-3xl font-bold tracking-tight text-white sm:text-4xl sm:leading-none"
                 >
-                  {{event.eventName | json}}
+                  {{ event.eventName | json }}
                 </h2>
                 <img />
 
@@ -278,7 +263,7 @@
                     alt=""
                   />
                   <div class="font-medium text-white hover:text-orange-700">
-                    <div>{{username}}</div>
+                    <div>{{ username }}</div>
                   </div>
                 </div>
 
@@ -286,18 +271,20 @@
 
                 <div class="flex items-center text-3xl text-yellow-400 ml-2">
                   <ng-container *ngFor="let star of [1, 2, 3, 4, 5]">
-                    <ng-container *ngIf="rating !== null && star <= rating; else emptyStar">&#9733;</ng-container>
+                    <ng-container
+                      *ngIf="rating !== null && star <= rating; else emptyStar"
+                      >&#9733;</ng-container
+                    >
                   </ng-container>
                   <ng-template #emptyStar>&#9734;</ng-template>
                 </div>
-      
 
                 <!-- Star rating end -->
 
                 <p
                   class="font-bold text-xl mt-8 text-white hover:text-orange-700"
                 >
-                  £{{event.price | json}}/person
+                  £{{ event.price | json }}/person
                 </p>
               </div>
             </div>
@@ -309,8 +296,10 @@
 
       <!-- Event description -->
 
-      <p class="px-4 mt-4 mb-4 text-orange-900 text-center text-md md:text-lg leading-loose">
-         {{event.description | json}}
+      <p
+        class="px-4 mt-4 mb-4 text-orange-900 text-center text-md md:text-lg leading-loose"
+      >
+        {{ event.description | json }}
       </p>
 
       <!-- Host information -->
@@ -365,7 +354,7 @@
         <div class="flex flex-col-1 sm:w-1/2 bg-white dark:bg-gray-900">
           <div class="container px-2 py-4">
             <h1
-              class=" text-2xl font-semibold text-center text-gray-800 capitalize lg:text-4xl"
+              class="text-2xl font-semibold text-center text-gray-800 capitalize lg:text-4xl"
             >
               Available Dates
             </h1>
@@ -379,12 +368,13 @@
                     <h2
                       class="text-lg font-medium text-gray-700 sm:text-2xl dark:text-gray-200"
                     >
-                    {{event.date | json}}
+                      {{ event.date | json }}
                     </h2>
                     <div
                       class="px-2 text-xs text-orange-500 bg-gray-100 rounded-full sm:px-4 sm:py-1 dark:bg-gray-700"
                     >
-                    {{event.starttime | json}} - {{event.endtime | json}} (GMT)
+                      {{ event.starttime | json }} -
+                      {{ event.endtime | json }} (GMT)
                     </div>
                   </div>
                 </div>
@@ -392,9 +382,9 @@
                 <h2
                   class="text-md font-semibold text-gray-500 sm:text-3xl dark:text-gray-300"
                 >
-                {{event.spaces | json}}
+                  {{ event.spaces | json }}
                   <span class="text-md sm:text-base font-medium"
-                    >/ {{event.spaces | json}} spots booked</span
+                    >/ {{ event.spaces | json }} spots booked</span
                   >
                 </h2>
                 <button
@@ -403,12 +393,20 @@
                   Book
                 </button>
               </div>
-
             </div>
           </div>
         </div>
       </div>
     </div>
+  </div>
+</div>
+
+<div
+  *ngIf="createSuccess"
+  class="fixed top-0 left-0 z-0 w-full h-full flex items-center justify-center"
+>
+  <div class="bg-orange-500 p-6 rounded-lg shadow-lg">
+    <p class="text-xl font-bold text-white">Event added successfully!</p>
   </div>
 </div>
 <!-- End of event prev code -->
