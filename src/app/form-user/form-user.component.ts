@@ -20,9 +20,11 @@ export class FormUserComponent implements OnInit {
 
   username: string | null = null;
   rating: number | null = null;
+  profilePic: string | null = null;
 
   ngOnInit(): void {
     this.username = localStorage.getItem('username');
+    this.profilePic = localStorage.getItem('profilePic');
     const ratingString = localStorage.getItem('rating');
     this.rating = ratingString ? parseFloat(ratingString) : null;
     this.fetchUserEvent()
