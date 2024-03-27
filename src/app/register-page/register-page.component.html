@@ -9,20 +9,10 @@
     >
       <div class="absolute bg-black opacity-60 inset-0 z-0"></div>
       <div class="w-full px-24 z-10">
-
-        <div *ngIf="registerSuccess"  class="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-orange-200 ">
-          <div class="bg-orange-500 p-6 rounded-lg shadow-lg">
-              <p class="text-xl font-bold">Registration Successful! Please log in to view your profile!</p>
-          </div>
-      </div>
-
-
         <h1 class="text-5xl font-bold text-left tracking-wide">
           Keep it special
         </h1>
-        <p class="text-3xl my-4">
-        Unleash Possibilities, Embrace Connections!
-        </p>
+        <p class="text-3xl my-4">Unleash Possibilities, Embrace Connections!</p>
       </div>
     </div>
     <div
@@ -46,10 +36,8 @@
           id="form"
           novalidate
           (submit)="onSubmit()"
-          
         >
-
-<!-- [formGroup] ="form" -->
+          <!-- [formGroup] ="form" -->
 
           <div class="pb-2 pt-4">
             <h1
@@ -63,11 +51,9 @@
               id="username"
               placeholder="Username"
               class="text-black block w-full p-4 text-lg rounded-3xl border border-orange-500"
-              
-              [(ngModel)] = "user.username"
+              [(ngModel)]="user.username"
             />
-<!-- formControlName = "username" -->
-
+            <!-- formControlName = "username" -->
           </div>
           <div class="pb-2 pt-4">
             <input
@@ -76,11 +62,9 @@
               name="password"
               id="password"
               placeholder="Password"
-             
-              [(ngModel)] = "user.password"
+              [(ngModel)]="user.password"
             />
-<!-- formControlName = "password" -->
-
+            <!-- formControlName = "password" -->
           </div>
 
           <div class="px-4 pb-2 pt-4">
@@ -92,9 +76,18 @@
               Register
             </button>
           </div>
-
-         
         </form>
+      </div>
+    </div>
+
+    <div
+      *ngIf="registerSuccess"
+      class="fixed mt-24 top-0 left-0 w-full h-full flex items-center justify-center bg-orange-200"
+    >
+      <div class="bg-orange-500 p-6 rounded-lg shadow-lg">
+        <p class="text-xl font-bold">
+          Registration Successful! Please log in to view your profile!
+        </p>
       </div>
     </div>
   </section>
