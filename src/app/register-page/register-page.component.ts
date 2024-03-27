@@ -46,7 +46,7 @@ export class RegisterPageComponent {
         setTimeout(() => {
           this.registerSuccess = false;
            this.router.navigateByUrl('/login')
-      }, 2000);
+      }, 3000);
 
 
 
