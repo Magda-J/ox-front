@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { UserProfileData } from '../../types';
 import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-bioedit',
@@ -20,6 +21,7 @@ export class BioeditComponent {
 
   constructor(
     private http: HttpClient,
+    private toastr: ToastrService
         
     ) {}
 
@@ -33,7 +35,11 @@ export class BioeditComponent {
     this.http.put(apiUrl, this.user).subscribe({
       next: (response: any) => {
         console.log('Post successful', response);
-        
+        this.toastr.success('Bio saved successfully!', 'Success!', {
+          closeButton: true,
+          positionClass: 'toast-top-left',
+          
+        });
         
 
         this.user = {

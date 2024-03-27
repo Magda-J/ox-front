@@ -256,8 +256,8 @@
                 <div class="flex items-center gap-4">
                   <img
                     class="w-10 h-10 rounded-full"
-                    src="https://images.pexels.com/photos/1820559/pexels-photo-1820559.jpeg?auto=compress&cs=tinysrgb&w=600"
-                    alt=""
+                    [src]="profilePic"
+                    alt="profile picture"
                   />
                   <div class="font-medium text-white hover:text-orange-700">
                     <div>{{username}}</div>
@@ -374,7 +374,7 @@
                 <h2
                   class="text-md font-semibold text-gray-500 sm:text-3xl dark:text-gray-300"
                 >
-                  9
+                {{event.spaces | json}}
                   <span class="text-md sm:text-base font-medium"
                     >/ {{event.spaces | json}} spots remaining</span
                   >

@@ -9,6 +9,7 @@ import { RegisterPageComponent } from './register-page/register-page.component';
 import { HomepageComponent } from './homepage/homepage.component';
 
 
+
 export const routes: Routes = [
   {
     path: 'eventpageUser/:id',
@@ -72,4 +73,6 @@ export const routes: Routes = [
     component: HomepageComponent,
 
   },
+
+
 ];

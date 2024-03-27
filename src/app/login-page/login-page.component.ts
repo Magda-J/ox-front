@@ -6,7 +6,11 @@ import { HttpClient } from '@angular/common/http';
 import { UserData } from '../../types';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
+
+import { ToastrService } from 'ngx-toastr';
+
 import { NavbarComponent } from '../navbar/navbar.component';
+
 
 @Component({
   selector: 'app-login-page',
@@ -28,6 +32,7 @@ export class LoginPageComponent {
     private http: HttpClient,
     private router: Router,
     private authService: AuthService,
+    private toastr: ToastrService
     
     ) {}
 
@@ -38,6 +43,12 @@ export class LoginPageComponent {
     this.http.post(apiUrl, this.user).subscribe({
       next: (response: any) => {
         console.log('Post successful', response);
+        this.toastr.success('Logged in successfully!', 'Success!', {
+          closeButton: true,
+          positionClass: 'toast-top-left',
+          timeOut: 2000
+        });
+
         localStorage.setItem('token', response.token)
         localStorage.setItem('username', response.username)
         localStorage.setItem('rating', response.rating)
@@ -66,19 +77,7 @@ export class LoginPageComponent {
   }
 
 
-  // tutorial
-  // onSubmit(): void {
-  //   this.http
-  //   .post<{ user: UserData}>('http://localhost:3000/auth/authorisation', {
-  //   user: this.form.getRawValue(),
-  // })
-  // .subscribe((response) => {
-  //   console.log('response', response)
-  //   // localStorage.setItem('token', response.user.token)
-  //   this.authService.currentUserSig.set(response.user)
-  // });
-
-  // }
+  
 
 }
 
