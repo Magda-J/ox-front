@@ -32,7 +32,7 @@ export class LoginPageComponent {
     ) {}
 
   onSubmit() {
-    const apiUrl = 'https://ox-back.onrender.com/auth/authorisation';
+    const apiUrl = 'https://ox-back-kmw3.onrender.com/auth/authorisation';
 
     // HTTP POST request
     this.http.post(apiUrl, this.user).subscribe({

@@ -55,7 +55,7 @@ export class FormComponent implements OnInit {
 
   onSubmit() {
     console.log(this.event);
-    const apiUrl = 'https://ox-back.onrender.com/events/postevent';
+    const apiUrl = 'https://ox-back-kmw3.onrender.com/events/postevent';
 
     // HTTP POST request
     this.http.post(apiUrl, this.event)
