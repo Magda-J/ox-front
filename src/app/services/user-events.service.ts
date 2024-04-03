@@ -11,7 +11,7 @@ export class UserEventService {
   constructor(private http: HttpClient) {}
 
   getEvents(): Observable<Event[]> {
-    return this.http.get<Event[]>('https://ox-back.onrender.com/events');
+    return this.http.get<Event[]>('https://ox-back-kmw3.onrender.com/events');
   }
   getEvent(id: string): Observable<Event | undefined> {
     return this.getEvents().pipe(

@@ -28,7 +28,7 @@ export class BookingComponent {
   fetchEvent(): void {
     const eventid = this.route.snapshot.params['eventid'];
     // const dateindex = this.route.snapshot.params['dateindex']
-    const apiUrl = `https://ox-back.onrender.com/events/${eventid}`
+    const apiUrl = `https://ox-back-kmw3.onrender.com/events/${eventid}`
 
     this.eventid = eventid
     // this.dateindex = dateindex
@@ -81,7 +81,7 @@ export class BookingComponent {
 
   onLoadPaymentData(event: any) {
     console.log(event, "DATA");
-    window.location.href = 'http://localhost:4200' // REDIRECT TO A 'BOOKING COMPLETED' PAGE
+    window.location.href = 'https://ox-front-nine.vercel.app/' // REDIRECT TO A 'BOOKING COMPLETED' PAGE
   }
   
     formData: ParticipantInterface = {
@@ -100,7 +100,7 @@ export class BookingComponent {
     console.log(this.formData);
     const eventid = this.route.snapshot.params['eventid']
     
-    const apiUrl = `https://ox-back.onrender.com/events/${eventid}/booking`;
+    const apiUrl = `https://ox-back-kmw3.onrender.com/events/${eventid}/booking`;
 
     this.http.post(apiUrl, this.formData)
     .subscribe({
