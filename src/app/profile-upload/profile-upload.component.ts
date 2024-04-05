@@ -31,7 +31,7 @@ export class ProfileUploadComponent {
 
 
   onSubmit() {
-    const apiUrl = 'https://ox-back-kmw3.onrender.com/user/putUserInfo';
+    const apiUrl = 'http://localhost:3000/user/putUserInfo';
 
     // HTTP POST request
     this.http.put(apiUrl, this.user).subscribe({

@@ -55,7 +55,7 @@ export class ProfilepageComponent {
 
 
   onSubmit() {
-    const apiUrl = 'https://ox-back-kmw3.onrender.com/user/putUserInfo';
+    const apiUrl = 'http://localhost:3000/user/putUserInfo';
 
     // HTTP POST request
     this.http.put(apiUrl, this.user).subscribe({
@@ -79,7 +79,7 @@ export class ProfilepageComponent {
 
   getUserData(): void {
     
-    const apiUrl = 'https://ox-back-kmw3.onrender.com/user/fetchUserInfo'
+    const apiUrl = 'http://localhost:3000/user/fetchUserInfo'
 
     this.http.get(apiUrl)
       .subscribe({
