@@ -44,7 +44,7 @@ export class EventpageUserComponent implements OnInit {
   onDelete() {
     
     const eventid = this.route.snapshot.params['id'];
-    const apiUrl = `http://localhost:3000/events/${eventid}`;
+    const apiUrl = `https://ox-back-kmw3.onrender.com/events/${eventid}`;
 
    
 
@@ -75,7 +75,7 @@ export class EventpageUserComponent implements OnInit {
 
   getUserData(): void {
     
-    const apiUrl = 'http://localhost:3000/user/fetchUserInfo'
+    const apiUrl = 'https://ox-back-kmw3.onrender.com/user/fetchUserInfo'
 
     this.http.get(apiUrl)
       .subscribe({
