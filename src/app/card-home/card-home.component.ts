@@ -34,8 +34,7 @@ export class CardHomeComponent implements OnChanges {
       .subscribe(events => {
         this.events = events;
         this.filterEvents();
-        console.log("Home events", this.events)
-        console.log("Filtered events", this.filteredEvents); 
+        
       });
   }
 

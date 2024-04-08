@@ -58,6 +58,7 @@
       <form action="" id="form" novalidate (submit)="onSubmit()">
         <div class="relative z-0 w-full mb-5">
           <input
+            minlength="5"
             type="text"
             name="name"
             placeholder=" "
@@ -186,6 +187,7 @@
             type="number"
             name="money"
             placeholder=" "
+            onclick="this.setAttribute('type', 'number');"
             class="pt-3 pb-2 pl-5 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
             [(ngModel)]="event.price"
           />

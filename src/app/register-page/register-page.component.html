@@ -36,8 +36,9 @@
           id="form"
           novalidate
           (submit)="onSubmit()"
+          #form = "ngForm"
         >
-          <!-- [formGroup] ="form" -->
+         
 
           <div class="pb-2 pt-4">
             <h1
@@ -51,9 +52,15 @@
               id="username"
               placeholder="Username"
               class="text-black block w-full p-4 text-lg rounded-3xl border border-orange-500"
+              pattern="^(?=.{4,15}$)[^\s]*\s?[^\s]*$"
+              #username="ngModel"
               [(ngModel)]="user.username"
+              required
             />
-            <!-- formControlName = "username" -->
+           <div class="text-danger text-red-600" *ngIf="username.invalid && (username.touched || username.dirty)">
+            <span *ngIf="username.errors?.['required']">This is required.</span>
+            <span *ngIf="username.errors?.['pattern']">Username must be 4-15 characters. One space is allowed.</span>
+           </div>
           </div>
           <div class="pb-2 pt-4">
             <input
@@ -62,9 +69,17 @@
               name="password"
               id="password"
               placeholder="Password"
+              minlength="8"
+              #password="ngModel"
               [(ngModel)]="user.password"
+              pattern = "^(?=.*[A-Z])(?=.*\d).{8,}$"
+              required
             />
-            <!-- formControlName = "password" -->
+            <div class="text-danger text-red-600" *ngIf="password.invalid && (password.touched || password.dirty)">
+              <span *ngIf="password.errors?.['required']">This is required.</span> 
+              <span *ngIf="password.errors?.['pattern']">Password must be: • 8-20 characters long. • Contain at least one number. • Contain at least one capital and lowercase letter.</span>
+             </div>
+            
           </div>
 
           <div class="px-4 pb-2 pt-4">
@@ -72,6 +87,7 @@
               id="submit"
               type="submit"
               class="uppercase block w-full p-4 text-lg rounded-full bg-orange-500 hover:bg-orange-600 focus:outline-none"
+              [disabled]="!form.form.valid"
             >
               Register
             </button>

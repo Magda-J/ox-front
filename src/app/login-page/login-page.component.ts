@@ -22,6 +22,7 @@ export class LoginPageComponent {
   };
 
   loginSuccess: boolean = false;
+  loginError: boolean = false;
 
 
   constructor(
@@ -32,12 +33,12 @@ export class LoginPageComponent {
     ) {}
 
   onSubmit() {
-    const apiUrl = 'https://ox-back-kmw3.onrender.com/auth/authorisation';
+    const apiUrl = 'http://localhost:3000/auth/authorisation';
 
     // HTTP POST request
     this.http.post(apiUrl, this.user).subscribe({
       next: (response: any) => {
-        console.log('Post successful', response);
+      
         localStorage.setItem('token', response.token)
         localStorage.setItem('username', response.username)
         localStorage.setItem('rating', response.rating)
@@ -70,6 +71,14 @@ export class LoginPageComponent {
       },
       error: (error: any) => {
         console.error('Error occurred', error);
+        this.loginError = true;
+
+        setTimeout(() => {
+          this.loginError = false;
+           this.router.navigateByUrl('/login')
+      }, 1000);
+
+
       },
     });
   }

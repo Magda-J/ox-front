@@ -44,14 +44,14 @@ export class EventpageUserComponent implements OnInit {
   onDelete() {
     
     const eventid = this.route.snapshot.params['id'];
-    const apiUrl = `https://ox-back-kmw3.onrender.com/events/${eventid}`;
+    const apiUrl = `http://localhost:3000/events/${eventid}`;
 
    
 
     // HTTP PUT request
     this.http.delete(apiUrl).subscribe({
       next: (response: any) => {
-        console.log('Delete successful', response);
+       
        
 
 
@@ -75,14 +75,14 @@ export class EventpageUserComponent implements OnInit {
 
   getUserData(): void {
     
-    const apiUrl = 'https://ox-back-kmw3.onrender.com/user/fetchUserInfo'
+    const apiUrl = 'http://localhost:3000/user/fetchUserInfo'
 
     this.http.get(apiUrl)
       .subscribe({
         next: (response: any) => {
-          console.log('GET request successful', response);
+          
           this.user = response;
-         console.log("USER STUFF TO FETCH", this.user)
+        
         },
         error: (error: any) => {
           console.error('Error occurred during GET request', error);
