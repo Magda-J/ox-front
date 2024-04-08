@@ -36,7 +36,7 @@ export class BookingComponent {
     this.http.get(apiUrl)
       .subscribe({
         next: (response: any) => {
-          console.log('GET request successful', response);
+        
           this.eventData = response;
           // this.totalPrice = response.price.toString();
         },
@@ -80,7 +80,7 @@ export class BookingComponent {
   }
 
   onLoadPaymentData(event: any) {
-    console.log(event, "DATA");
+    
     window.location.href = 'https://ox-front-nine.vercel.app/' // REDIRECT TO A 'BOOKING COMPLETED' PAGE
   }
   
@@ -97,7 +97,7 @@ export class BookingComponent {
 
   onClick(): void {
 
-    console.log(this.formData);
+    
     const eventid = this.route.snapshot.params['eventid']
     
     const apiUrl = `http://localhost:3000/events/${eventid}/booking`;
@@ -105,7 +105,7 @@ export class BookingComponent {
     this.http.post(apiUrl, this.formData)
     .subscribe({
       next: (response: any) => {
-        console.log('Post successful', response);
+       
         
         this.formData = {
           _id: '',

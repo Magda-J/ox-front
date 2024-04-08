@@ -51,7 +51,7 @@ export class EventpageUserComponent implements OnInit {
     // HTTP PUT request
     this.http.delete(apiUrl).subscribe({
       next: (response: any) => {
-        console.log('Delete successful', response);
+       
        
 
 
@@ -80,9 +80,9 @@ export class EventpageUserComponent implements OnInit {
     this.http.get(apiUrl)
       .subscribe({
         next: (response: any) => {
-          console.log('GET request successful', response);
+          
           this.user = response;
-         console.log("USER STUFF TO FETCH", this.user)
+        
         },
         error: (error: any) => {
           console.error('Error occurred during GET request', error);

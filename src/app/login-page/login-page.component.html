@@ -95,5 +95,15 @@
         <p class="text-xl font-bold">Login Successful!</p>
       </div>
     </div>
+
+    <div
+      *ngIf="loginError"
+      class="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-red-200"
+    >
+      <div class="bg-red-500 p-6 rounded-lg shadow-lg text-center">
+        <p class="text-xl font-bold">Wrong username or password.</p>
+        <p class="text-xl font-bold">Try again!</p>
+      </div>
+    </div>
   </section>
 </body>

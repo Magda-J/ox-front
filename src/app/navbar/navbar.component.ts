@@ -32,7 +32,7 @@ ngOnInit(): void {
 
 
 logout(): void {
-  console.log('logout');
+ 
   localStorage.setItem('token', '')
   localStorage.setItem('username', '')
   localStorage.setItem('rating', '')

@@ -37,8 +37,7 @@ export class RegisterPageComponent {
     // HTTP POST request
     this.http.post(apiUrl, this.user).subscribe({
       next: (response: any) => {
-        console.log('Post successful', response);
-        console.log("user signal", response)
+        
        
 
         this.registerSuccess = true;

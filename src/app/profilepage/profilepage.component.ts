@@ -60,7 +60,7 @@ export class ProfilepageComponent {
     // HTTP POST request
     this.http.put(apiUrl, this.user).subscribe({
       next: (response: any) => {
-        console.log('Post successful', response);
+     
         
         
         this.user = {
@@ -84,9 +84,9 @@ export class ProfilepageComponent {
     this.http.get(apiUrl)
       .subscribe({
         next: (response: any) => {
-          console.log('GET request successful', response);
+         
           this.user = response;
-         console.log("USER STUFF TO FETCH", this.user)
+        
         },
         error: (error: any) => {
           console.error('Error occurred during GET request', error);

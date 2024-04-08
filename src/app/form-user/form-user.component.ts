@@ -61,7 +61,7 @@ fetchUserEvent(): void {
     this.http.get(apiUrl)
       .subscribe({
         next: (response: any) => {
-          console.log('GET request successful', response);
+          
           this.eventUser = response;
           // this.totalPrice = response.price.toString();
         },
@@ -78,14 +78,14 @@ fetchUserEvent(): void {
 
 
   onSubmit() {
-    console.log(this.eventUser);
+    
     const eventid = this.route.snapshot.params['id'];
     const apiUrl = `http://localhost:3000/events/${eventid}`;
 
     // HTTP PUT request
     this.http.put(apiUrl, this.eventUser).subscribe({
       next: (response: any) => {
-        console.log('Edit successful', response);
+        
 
         this.eventUser = {
           eventName: '',

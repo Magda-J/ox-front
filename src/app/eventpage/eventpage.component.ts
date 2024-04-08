@@ -35,7 +35,7 @@ export class EventpageComponent implements OnInit {
       this.eventService.getHomeEvent(getEventId)
         .subscribe(event => {
           this.event = event;
-          console.log("check eventpage event", this.event)
+         
 
 
           
@@ -44,13 +44,13 @@ export class EventpageComponent implements OnInit {
   //  this.eventService.getUserInfo()
   const getEventId2 = this.route.snapshot.paramMap.get('id');
   this.eventid = getEventId2;
-  console.log("eventid 2", getEventId2)
+ 
     if(getEventId2) {
    
     this.eventService.getUserInfo(getEventId2)
       .subscribe(user => {
         this.user = user;
-        console.log(this.user)
+        
       });
   
 }

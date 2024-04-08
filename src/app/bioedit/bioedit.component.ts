@@ -35,7 +35,7 @@ export class BioeditComponent {
     // HTTP POST request
     this.http.put(apiUrl, this.user).subscribe({
       next: (response: any) => {
-        console.log('Post successful', response);
+      
         
         
 

@@ -54,14 +54,14 @@ export class FormComponent implements OnInit {
   constructor(private http: HttpClient, private router: Router) {}
 
   onSubmit() {
-    console.log(this.event);
+    
     const apiUrl = 'http://localhost:3000/events/postevent';
 
     // HTTP POST request
     this.http.post(apiUrl, this.event)
       .subscribe({
         next: (response: any) => {
-          console.log('Post successful', response);
+          
           
           this.event = {
             eventName: '',
