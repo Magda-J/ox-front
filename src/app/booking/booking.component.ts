@@ -28,7 +28,7 @@ export class BookingComponent {
   fetchEvent(): void {
     const eventid = this.route.snapshot.params['eventid'];
     // const dateindex = this.route.snapshot.params['dateindex']
-    const apiUrl = `http://localhost:3000/events/${eventid}`
+    const apiUrl = `https://ox-back-kmw3.onrender.com/events/${eventid}`
 
     this.eventid = eventid
     // this.dateindex = dateindex
@@ -100,7 +100,7 @@ export class BookingComponent {
     
     const eventid = this.route.snapshot.params['eventid']
     
-    const apiUrl = `http://localhost:3000/events/${eventid}/booking`;
+    const apiUrl = `https://ox-back-kmw3.onrender.com/events/${eventid}/booking`;
 
     this.http.post(apiUrl, this.formData)
     .subscribe({

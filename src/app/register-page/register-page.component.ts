@@ -32,7 +32,7 @@ export class RegisterPageComponent {
     ) {}
 
   onSubmit() {
-    const apiUrl = 'http://localhost:3000/auth/signup';
+    const apiUrl = 'https://ox-back-kmw3.onrender.com/auth/signup';
 
     // HTTP POST request
     this.http.post(apiUrl, this.user).subscribe({

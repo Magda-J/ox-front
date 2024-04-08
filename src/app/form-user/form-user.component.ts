@@ -56,7 +56,7 @@ export class FormUserComponent implements OnInit {
 
 fetchUserEvent(): void {
     const eventid = this.route.snapshot.params['id'];
-    const apiUrl = `http://localhost:3000/events/${eventid}`
+    const apiUrl = `https://ox-back-kmw3.onrender.com/events/${eventid}`
 
     this.http.get(apiUrl)
       .subscribe({
@@ -80,7 +80,7 @@ fetchUserEvent(): void {
   onSubmit() {
     
     const eventid = this.route.snapshot.params['id'];
-    const apiUrl = `http://localhost:3000/events/${eventid}`;
+    const apiUrl = `https://ox-back-kmw3.onrender.com/events/${eventid}`;
 
     // HTTP PUT request
     this.http.put(apiUrl, this.eventUser).subscribe({

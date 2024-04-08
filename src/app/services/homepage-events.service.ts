@@ -13,7 +13,7 @@ export class HomepageEventsService {
   constructor(private http: HttpClient) {}
 
   getHomeEvents(): Observable<EventData[]> {
-    return this.http.get<EventData[]>('http://localhost:3000/events');
+    return this.http.get<EventData[]>('https://ox-back-kmw3.onrender.com/events');
    
   }
   getHomeEvent(id: string): Observable<EventData | undefined> {
@@ -23,7 +23,7 @@ export class HomepageEventsService {
   }
 
   getUserInfo(id: string): Observable<UserProfileData | undefined> {
-    return this.http.get<UserProfileData>(`http://localhost:3000/user/event/${id}/creator`);
+    return this.http.get<UserProfileData>(`https://ox-back-kmw3.onrender.com/user/event/${id}/creator`);
 }
 
 }
